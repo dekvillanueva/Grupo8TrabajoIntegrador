@@ -1,0 +1,19 @@
+{
+  "name": "grupo8trabajointegrador",
+  "version": "1.0.0",
+  "description": "Trabajo integrador final curso FullStack - G8 'Proyecto Essensor' ",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dekvillanueva/Grupo8TrabajoIntegrador.git"
+  },
+  "author": "@MarianoGitH/@dekvillanueva",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dekvillanueva/Grupo8TrabajoIntegrador/issues"
+  },
+  "homepage": "https://github.com/dekvillanueva/Grupo8TrabajoIntegrador#readme"
+}
