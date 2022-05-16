@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 
-/* TOOLBAR SECTION */
+/* ***********   TOOLBAR SECTION   *************************************************** */
 
 .toolbar {
   height: 20vh;
@@ -129,42 +129,32 @@
   text-decoration: none;
 }
 
-/*SECTIONS */
+/* ***********   GENERAL SECTIONS   *************************************************** */
 
 .section-format {
   height: 25vh;
-  border: solid 2px red;
-}
+  }
 
 .section-title {
   display: flex;
+  padding-top: 5%;
   justify-content: left;
   height: 10%;
-  border: solid 2px rgb(23, 17, 17);
 }
 
 .section-article {
-  margin: auto;
-  height: 90%;
-  width: 50%;
-  box-shadow: 0px 0px 10px grey;
-  border: solid 2px rgb(0, 255, 0);
-}
-
-.section-article-news {
   display: flex;
-  justify-content: left;
-  height: 90%;
+  margin: auto;
+    height: 75%;
+  width: 50%;
+  flex-direction: column;
   box-shadow: 0px 0px 10px grey;
-  border: solid 2px rgb(0, 255, 0);
 }
-
 
 .section-img {
   display: flex;
   justify-content: center;
   width: auto;
-  border: solid 2px orangered;
 }
 
 .section-img img {
@@ -172,31 +162,49 @@
   width: auto;
 }
 
+.section-article-foot-name {
+  display: flex;
+  height: 10%;
+  justify-content: center;
+}
+
+.section-article-foot {
+  display: flex;
+  height: 10%;
+  justify-content: right;
+}
+
+/* ***********   SALES SECTION   *************************************************** */
+
 .section-sale-img {
   height: 70%;
 }
 
+/* ***********   BEST SELLERS SECTION   *************************************************** */
+
 .section-bestSellers-img {
   height: 90%;
+}
+
+/* ***********   NEWS SECTION   *************************************************** */
+
+.section-article-news {
+  display: flex;
+  justify-content: left;
+  height: 90%;
+  box-shadow: 0px 0px 10px grey;
 }
 
 .section-news-img {
   height: 100%;
 }
 
-.section-article-foot-name {
-  display: flex;
-  height: 10%;
-  justify-content: center;
-  border: solid 2px darkmagenta;
+.news-description {
+  padding: 1rem;
+  text-align: justify;
 }
 
-.section-article-foot {
-  display: flex;
-  height: 10%;
-  border: solid 2px darkmagenta;
-}
-
+/* ***********   COLORS   ***************************************************************** */
 .blue-color {
   background-color: #3333ff;
 }
