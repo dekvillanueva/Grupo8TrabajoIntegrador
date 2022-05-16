@@ -32,18 +32,21 @@
                 <h2 class="title">Bienvenido</h2>
             </div>
             <div class="main-container-option-select">
-                <div class="main-container-option-select-signin">
-                    <input type="radio" name="option" id="signin" value="signin" checked>
-                    <label for="signin">
-                        <a href="">Iniciar sesión</a>
-                    </label>
-                </div>
+                
                 <div class="main-container-option-select-signout">
-                    <input type="radio" name="option" id="signout" value="signout">
+                    <input type="radio" name="option" id="signout" value="signout" checked>
                     <label for="signout">
                         <a href="">Crear cuenta</a>
                     </label>
                 </div>
+                
+                <div class="main-container-option-select-signin">
+                    <input type="radio" name="option" id="signin" value="signin">
+                    <label for="signin">
+                        <a href="">Iniciar sesión</a>
+                    </label>
+                </div>
+                
             </div>
 
             <div class="main-container-text-inputs-email">
@@ -65,13 +68,18 @@
                     </div>
                 </div>
             </div>
+            <div class="main-container-text-inputs-clave">
+                <div class="rounder-container">
+                    <label for="repit-password">Repetir clave</label>
+                    <div class="text-input-with-icon">
+                        <i class="material-icons">lock</i>
+                        <input class="text-inputs" type="password" name="user-repit-password" id="repit-password" required>
+                    </div>
+                </div>
+            </div>
             <div class="main-container-text-inputs-button">
                 <button class="button-iniciar" type="button"
-                    onclick="alert('Prueba de button click Alert!')">Iniciar</button>
-            </div>
-
-            <div class="main-container-footer">
-                <a href=""> Olvidé la clave</a>
+                    onclick="alert('Prueba de button click Alert!')">Crear cuenta</button>
             </div>
         </div>
     </header>

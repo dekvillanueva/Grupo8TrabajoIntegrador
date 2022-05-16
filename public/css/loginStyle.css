@@ -17,90 +17,121 @@ body {
     justify-content: center;
 }
 
-.main-container{
+img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+.main-container {
     display: flex;
     flex-direction: column;
     width: 100%;
     justify-content: space-around;
     height: 80vh;
+    background-color: rgb(219, 227, 242);
 }
 
-.main-container-title{
+.main-container-title {
     display: flex;
     justify-content: center;
-    width: 100%;
-    height: 20%;
-}
-
-.title{
-    margin-top: 2rem;
-    font-size: 2.5rem;
-}
-
-.main-container-option-select{
-    display: flex;
-    flex-direction: column;
     width: 100%;
     height: 10%;
 }
 
-a{
+.title {
+    margin-top: 1rem;
+    font-size: 2.5rem;
+}
+
+.main-container-option-select {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 5%;
+}
+
+a {
     margin-left: 0.45rem;
     text-decoration: none;
 }
 
-.main-container-option-select-signin{
+.main-container-option-select-signin {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.main-container-option-select-signout{
+.main-container-option-select-signout {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.main-container-text-inputs{
-    width: 100%;
-    height: 35%;
-    justify-content: center;
-}
 
-.main-container-text-inputs-email{
-    width: 100%;
+.main-container-text-inputs-email {
+    width: auto;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
-.main-container-text-inputs-clave{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-
-.text-inputs{
+.rounder-container {
     margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    padding: 0.8rem;
+    background: #fff;
+}
+
+.text-input-with-icon {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.main-container-text-inputs-clave {
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.text-inputs {
+    margin-top: 0.3rem;
+    margin-left: 0.5rem;
+    margin-bottom: 0.3rem;
     width: 280px;
     height: 30px;
+    outline: none;
+    border: none;
+    font-size: 1.0125rem;
 }
 
-.main-container-text-inputs-button{
+.main-container-text-inputs-button {
     width: 100%;
     display: flex;
     justify-content: center;
 }
 
-.button-iniciar{
+.button-iniciar {
     margin-top: 1rem;
-    width: 140px;
-    height: 30px;
+    width: 280px;
+    height: 40px;
+    background: #3333ff;
+    color: #fff;
+    border: none;
+    border-radius: 30px;
 }
 
-.main-container-button{
+.main-container-footer {
+    display: flex;
+
     width: 100%;
-    height: 20%;
+    height: 5%;
     justify-content: center;
 }
