@@ -139,6 +139,7 @@ body {
 .section-format {
   height: 75vh;
   background: linear-gradient(to right, black, #3333ff);
+  border: solid 2px red;
 }
 
 .section-title {
@@ -148,7 +149,8 @@ body {
   justify-content: left;
   height: 10%;
   color: whitesmoke;
-  background: linear-gradient(to right,#101040, #101040, #3333ff);
+  background: linear-gradient(to right, #101040, #101040, #3333ff);
+  border: solid 2px green;
 }
 
 .section-article {
@@ -158,17 +160,17 @@ body {
   width: 50%;
   flex-direction: column;
   box-shadow: 0px 0px 10px grey;
+  border: solid 2px blue;
 }
 
 .section-img {
   display: flex;
-  box-sizing: content-box;
   justify-content: center;
-  margin-top: 2%;
+  object-fit: contain;
+  border: solid 2px rgb(255, 0, 179);
 }
 
 .section-img img {
-  display: flex;
   height: 100%;
   width: auto;
 }
@@ -203,13 +205,13 @@ body {
 /* ***********   SALES SECTION   *************************************************** */
 
 .section-sale-img {
-  height: 65%;
+  height: 85%;
 }
 
 /* ***********   BEST SELLERS SECTION   *************************************************** */
 
 .section-bestSellers-img {
-  height: 80%;
+  height: 65%;
 }
 
 /* ***********   NEWS SECTION   *************************************************** */
