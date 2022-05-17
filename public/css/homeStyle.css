@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+}
+
 /* ***********   TOOLBAR SECTION   *************************************************** */
 
 .toolbar {
@@ -132,20 +137,24 @@
 /* ***********   GENERAL SECTIONS   *************************************************** */
 
 .section-format {
-  height: 25vh;
-  }
+  height: 75vh;
+  background: linear-gradient(to right, black, #3333ff);
+}
 
 .section-title {
   display: flex;
-  padding-top: 5%;
+  margin-bottom: 3%;
+  margin-left: 2%;
   justify-content: left;
   height: 10%;
+  color: whitesmoke;
+  background: linear-gradient(to right,#101040, #101040, #3333ff);
 }
 
 .section-article {
   display: flex;
   margin: auto;
-    height: 75%;
+  height: 75%;
   width: 50%;
   flex-direction: column;
   box-shadow: 0px 0px 10px grey;
@@ -153,11 +162,13 @@
 
 .section-img {
   display: flex;
+  box-sizing: content-box;
   justify-content: center;
-  width: auto;
+  margin-top: 2%;
 }
 
 .section-img img {
+  display: flex;
   height: 100%;
   width: auto;
 }
@@ -166,24 +177,39 @@
   display: flex;
   height: 10%;
   justify-content: center;
+  padding-top: 2%;
+  color: white;
+  text-decoration: double;
 }
 
 .section-article-foot {
   display: flex;
+  margin-right: 2%;
+  margin-bottom: 1%;
   height: 10%;
   justify-content: right;
+}
+
+.section-article-foot-price {
+  font-weight: 300;
+  color: rgb(209, 181, 240);
+}
+
+.section-article-foot-discount {
+  font-weight: 450;
+  color: rgb(183, 244, 17);
 }
 
 /* ***********   SALES SECTION   *************************************************** */
 
 .section-sale-img {
-  height: 70%;
+  height: 65%;
 }
 
 /* ***********   BEST SELLERS SECTION   *************************************************** */
 
 .section-bestSellers-img {
-  height: 90%;
+  height: 80%;
 }
 
 /* ***********   NEWS SECTION   *************************************************** */
@@ -192,16 +218,17 @@
   display: flex;
   justify-content: left;
   height: 90%;
-  box-shadow: 0px 0px 10px grey;
 }
 
 .section-news-img {
-  height: 100%;
+  height: 80%;
+  padding-left: 3%;
 }
 
 .news-description {
-  padding: 1rem;
+  padding: 3%;
   text-align: justify;
+  color: rgb(212, 207, 207);
 }
 
 /* ***********   COLORS   ***************************************************************** */
