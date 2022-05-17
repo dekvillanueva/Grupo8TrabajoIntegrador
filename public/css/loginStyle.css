@@ -108,7 +108,8 @@ a {
     width: 280px;
     height: 30px;
     outline: none;
-    border: none;
+    border-width: 0 0 1px;
+    border-color: #3333ff;
     font-size: 1.0125rem;
 }
 
@@ -126,6 +127,7 @@ a {
     color: #fff;
     border: none;
     border-radius: 30px;
+    font-size: 1.0125rem;
 }
 
 .main-container-footer {
