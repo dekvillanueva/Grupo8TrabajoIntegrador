@@ -13,10 +13,12 @@ const public = path.join(__dirname, 'public/');
 const httpRaiz = '/';
 const httpHome ='/home';
 const httpLogin ='/login';
+const httpRegister ='/register';
 
 // HTML
 const homeHtml = 'home.html';
 const loginHtml = 'login.html';
+const registerHtml = 'register.html';
 
 // Define the static file path
 app.use(express.static(__dirname + '/public/'));
@@ -31,6 +33,10 @@ app.get(httpHome, (req,res) =>{
 
 app.get(httpLogin, (req,res) =>{
     res.sendFile(path.join(views, loginHtml))
+})
+
+app.get(httpRegister, (req,res) =>{
+    res.sendFile(path.join(views, registerHtml))
 })
 
 app.listen(port, () =>{
