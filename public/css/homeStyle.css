@@ -137,42 +137,48 @@ body {
 /* ***********   GENERAL SECTIONS   *************************************************** */
 
 .section-format {
-  height: 75vh;
+  display: flex;
+  flex-direction: column;
   background: linear-gradient(to right, black, #3333ff);
-  border: solid 2px red;
+  /* border: solid 2px red; */
+}
+
+.articles-container {
+  display: flex;
+  flex-direction: row;
+  margin-top: 2.2rem;
+  /* border: solid 2px yellow; */
 }
 
 .section-title {
   display: flex;
   margin-bottom: 3%;
-  margin-left: 2%;
+  padding-left: 1rem;
   justify-content: left;
+  align-items: center;
   height: 10%;
+  width: 100%;
   color: whitesmoke;
   background: linear-gradient(to right, #101040, #101040, #3333ff);
-  border: solid 2px green;
+  /* border: solid 2px green; */
 }
 
 .section-article {
   display: flex;
-  margin: auto;
-  height: 75%;
-  width: 50%;
   flex-direction: column;
   box-shadow: 0px 0px 10px grey;
-  border: solid 2px blue;
+  /* border: solid 2px blue; */
 }
 
 .section-img {
   display: flex;
-  justify-content: center;
-  object-fit: contain;
-  border: solid 2px rgb(255, 0, 179);
+  height: 70%;
+  /* border: solid 2px rgb(255, 0, 179); */
 }
 
 .section-img img {
-  height: 100%;
-  width: auto;
+  height: auto;
+  width: 100%;
 }
 
 .section-article-foot-name {
@@ -204,17 +210,68 @@ body {
 
 /* ***********   SALES SECTION   *************************************************** */
 
-.section-sale-img {
-  height: 85%;
+.section-sales {
+  display: flex;
+  height: 70%;
+  /* border: solid 2px rgb(255, 0, 179); */
 }
 
-/* ***********   BEST SELLERS SECTION   *************************************************** */
+.section-sales img {
+  height: auto;
+  width: 100%;
+}
 
-.section-bestSellers-img {
-  height: 65%;
+.display-2 {
+  display: none;
+}
+
+.display-3 {
+  display: none;
+}
+
+.display-4 {
+  display: none;
+}
+
+/* ***********   SOLUTIONS SECTION   *************************************************** */
+
+
+
+.articles-container-news {
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  border: solid 2px yellow;
+}
+
+.section-img-news {
+  display: flex;
+  height: 50%;
+  /* border: solid 2px rgb(255, 0, 179); */
+}
+
+.section-img-news img {
+  height: auto;
+  width: 100%;
+}
+
+.section-article-foot-name-solutions {
+  display: flex;
+  height: 30%;
+  justify-content: center;
+  align-items: center;
+  padding-top: 2%;
+  color: white;
+  text-decoration: double;
 }
 
 /* ***********   NEWS SECTION   *************************************************** */
+
+.articles-container-news {
+  display: flex;
+  margin: auto;
+  /* border: solid 2px yellow; */
+}
 
 .section-article-news {
   display: flex;
@@ -222,15 +279,41 @@ body {
   height: 90%;
 }
 
-.section-news-img {
-  height: 80%;
-  padding-left: 3%;
+.section-img-news {
+  display: flex;
+  height: 50%;
+  /* border: solid 2px rgb(255, 0, 179); */
 }
+
+.section-img-news img {
+  height: auto;
+  width: 100%;
+}
+
 
 .news-description {
   padding: 3%;
   text-align: justify;
   color: rgb(212, 207, 207);
+}
+
+
+.news-title{
+  display: flex;
+  color: greenyellow;
+  padding-top: 1em;
+  font-weight: 500;
+  align-items: center;
+  justify-content: center;
+}
+
+.news-description{
+  color: white;
+  font-size: medium;
+  font-weight: 300;
+  width: 100%;
+  align-items: center;
+  justify-content: center; 
 }
 
 /* ***********   COLORS   ***************************************************************** */
@@ -240,6 +323,30 @@ body {
 
 .white-color {
   color: #ffff;
+}
+
+/* ***********   MEDIAS QUERIES   ***************************************************************** */
+
+/*TABLET*/
+@media (min-width: 361px) {
+  .display-2 {
+    display: block;
+  }
+}
+
+/*DESKTOP*/
+@media (min-width: 769px) {
+  .display-2 {
+    display: block;
+  }
+
+  .display-3 {
+    display: block;
+  }
+
+  .display-4 {
+    display: block;
+  }
 }
 
 /* @keyframes cambio {
