@@ -139,20 +139,17 @@ body {
 .section-format {
   display: flex;
   flex-direction: column;
-  background: linear-gradient(to right, black, #3333ff);
+  background: #fff;
   /* border: solid 2px red; */
 }
 
 .articles-container {
   display: flex;
-  flex-direction: row;
-  margin-top: 2.2rem;
-  /* border: solid 2px yellow; */
+  /* border: solid 2px rgb(7, 212, 226); */
 }
 
 .section-title {
   display: flex;
-  margin-bottom: 3%;
   padding-left: 1rem;
   justify-content: left;
   align-items: center;
@@ -163,16 +160,11 @@ body {
   /* border: solid 2px green; */
 }
 
-.section-article {
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0px 0px 10px grey;
-  /* border: solid 2px blue; */
-}
-
 .section-img {
   display: flex;
-  height: 70%;
+  /* height: 70%; */
+  /* padding-left: 0.75rem;
+  padding-right: 00.75rem; */
   /* border: solid 2px rgb(255, 0, 179); */
 }
 
@@ -181,139 +173,63 @@ body {
   width: 100%;
 }
 
+/* ***********   SOLUTIONS SECTION   *************************************************** */
+
+.section-article-foot-name-solutions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 2%;
+  color: black;
+  border: solid 2px blue;
+}
+
+/* ***********   SALES SECTION   *************************************************** */
 .section-article-foot-name {
   display: flex;
   height: 10%;
   justify-content: center;
   padding-top: 2%;
-  color: white;
+  color: rgb(233, 19, 19);
   text-decoration: double;
-}
-
-.section-article-foot {
-  display: flex;
-  margin-right: 2%;
-  margin-bottom: 1%;
-  height: 10%;
-  justify-content: right;
 }
 
 .section-article-foot-price {
   font-weight: 300;
-  color: rgb(209, 181, 240);
+  color: black;
 }
 
 .section-article-foot-discount {
   font-weight: 450;
-  color: rgb(183, 244, 17);
+  color: rgb(13, 14, 13);
 }
-
-/* ***********   SALES SECTION   *************************************************** */
-
-.section-sales {
-  display: flex;
-  height: 70%;
-  /* border: solid 2px rgb(255, 0, 179); */
-}
-
-.section-sales img {
-  height: auto;
-  width: 100%;
-}
-
-.display-2 {
-  display: none;
-}
-
-.display-3 {
-  display: none;
-}
-
-.display-4 {
-  display: none;
-}
-
-/* ***********   SOLUTIONS SECTION   *************************************************** */
-
-
-
-.articles-container-news {
-  display: flex;
-  flex-direction: row;
-  margin: auto;
-  border: solid 2px yellow;
-}
-
-.section-img-news {
-  display: flex;
-  height: 50%;
-  /* border: solid 2px rgb(255, 0, 179); */
-}
-
-.section-img-news img {
-  height: auto;
-  width: 100%;
-}
-
-.section-article-foot-name-solutions {
-  display: flex;
-  height: 30%;
-  justify-content: center;
-  align-items: center;
-  padding-top: 2%;
-  color: white;
-  text-decoration: double;
-}
-
 /* ***********   NEWS SECTION   *************************************************** */
 
-.articles-container-news {
+.section-news{
   display: flex;
-  margin: auto;
-  /* border: solid 2px yellow; */
+  flex-direction: column;
 }
 
-.section-article-news {
+.news-title {
   display: flex;
-  justify-content: left;
-  height: 90%;
-}
-
-.section-img-news {
-  display: flex;
-  height: 50%;
-  /* border: solid 2px rgb(255, 0, 179); */
-}
-
-.section-img-news img {
-  height: auto;
-  width: 100%;
-}
-
-
-.news-description {
-  padding: 3%;
-  text-align: justify;
-  color: rgb(212, 207, 207);
-}
-
-
-.news-title{
-  display: flex;
-  color: greenyellow;
-  padding-top: 1em;
-  font-weight: 500;
+  color: rgb(32, 9, 241);
+  padding-top: 6rem;
+  font-weight: 800;
   align-items: center;
   justify-content: center;
 }
 
-.news-description{
-  color: white;
-  font-size: medium;
-  font-weight: 300;
+.news-description {
+  color: black;
+  font-size: 1rem;
+  font-weight: 500;
   width: 100%;
+  text-align: justify;
   align-items: center;
-  justify-content: center; 
+  justify-content: center;
+  padding-top: 2rem;
+  padding-left: 8rem;
+  padding-right: 8rem;
 }
 
 /* ***********   COLORS   ***************************************************************** */
@@ -330,6 +246,7 @@ body {
 /*TABLET*/
 @media (min-width: 361px) {
   .display-2 {
+    display: flex;
     display: block;
   }
 }
@@ -337,14 +254,17 @@ body {
 /*DESKTOP*/
 @media (min-width: 769px) {
   .display-2 {
+    display: flex;
     display: block;
   }
 
   .display-3 {
+    display: flex;
     display: block;
   }
 
   .display-4 {
+    display: flex;
     display: block;
   }
 }
