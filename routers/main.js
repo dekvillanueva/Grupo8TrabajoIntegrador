@@ -1,12 +1,15 @@
 const express = require("express");
-const mainController = require("../controllers/mainController");
+const homeController = require("../controllers/homeController");
+const loginController = require("../controllers/loginController");
+const registerController = require("../controllers/registerController");
+const cartController = require("../controllers/cartController");
 
 const router = express.Router();
 
-router.get('/', mainController.home);
-router.get('/login', mainController.login);
-router.get('/register', mainController.register);
-router.get('/cart', mainController.cart);
+router.get('/', homeController.home);
+router.get('/login', loginController.login);
+router.get('/register', registerController.register);
+router.get('/cart', cartController.cart);
 
 
 
