@@ -292,13 +292,6 @@ body {
     1201px and more —  Extra large screens, TV
 /*
 
-/* Smartphones (landscape) ----------- */
-@media only screen and (min-width : 321px) {
-    .toolbar {
-        height: 4rem;
-    }
-}
-
 
 /* Escritorio extra grande */
 @media only screen and (min-width: 1200px) {

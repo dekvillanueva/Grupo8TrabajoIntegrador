@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+ ***********   HEAD   **************************************************
+-->
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+    <link rel="stylesheet" href="css/loginStyle.css" />
+    <title>ESSENSOR Login</title>
+</head>
+
+<!--
+ ***********   BODY   *************************************************
+-->
+
+<body>
+    <!--
+ ***********   HEADER   ***********************************************
+-->
+    <div>
+        <%- include('partials/header.ejs')%>
+    </div>
+
+    <form action="">
+
+        <main>
+            <div class="main-container">
+                <div class="main-container-title">
+                    <h2 class="title">Cargar / Modificar producto</h2>
+                </div>
+
+                <div class="main-container-text-inputs-email">
+                    <div class="rounder-container">
+                        <label for="productsName">Nombre del producto</label>
+                        <div class="text-input-with-icon">
+                            <input class="text-inputs" type="text" name="user-email" placeholder="products name"
+                                id="email" required />
+                        </div>
+                    </div>
+                </div>
+                <div class="main-container-text-inputs-clave">
+                    <div class="rounder-container">
+                        <label for="productDescription">Descripción del producto</label>
+                        <div class="text-input-with-icon">
+                            <textarea name="" id="" cols="30" rows="5" class="text-inputs"
+                                placeholder="Products description" required>
+                            </textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="main-container-text-inputs-clave">
+                    <div class="rounder-container">
+                        <label for="imagen">Imagen</label>
+                        <div class="text-input-with-icon">
+                            <input class="text-inputs" type="image" name="image" id="imagen" required />
+                        </div>
+                    </div>
+                </div>
+                <div class="main-container-text-inputs-clave">
+                    <div class="rounder-container">
+                        <label for="categoria">Categoría</label>
+                        <div class="text-input-with-icon">
+                            <select name="select">
+                                <option value="Cat1">Categoría 1</option>
+                                <option value="Cat2" selected>Categoría 2</option>
+                                <option value="Cat3">Categoría 3</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="main-container-text-inputs-clave">
+                    <div class="rounder-container">
+                        <label for="precio">Precio</label>
+                        <div class="text-input-with-icon">
+                            <input class="text-inputs" type="text" name="precio" id="precio" placeholder="$precio" required />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="main-container-text-inputs-button">
+                    <button class="button-iniciar" type="button" onclick="alert('Producto guardado correctamente!')">
+                        Guardar producto
+                    </button>
+                    <button class="button-iniciar" type="button" onclick="alert('Producto modificado correctamente!')">
+                        Modificar producto
+                    </button>
+                </div>
+            </div>
+        </main>
+
+    </form>
+
+    <!--
+ ***********   FOOTER   **********************************************************
+-->
+    <div>
+        <%- include('partials/footer.ejs')%>
+    </div>
+
+</body>
+
+</html>
