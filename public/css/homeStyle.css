@@ -140,12 +140,12 @@ body {
   display: flex;
   flex-direction: column;
   background: #fff;
-  border: solid 2px red;
+  /* border: solid 2px red; */
 }
 
 .articles-container {
   display: flex;
-  border: solid 2px rgb(7, 212, 226);
+  /* border: solid 2px rgb(7, 212, 226); */
 }
 
 .section-title {
@@ -164,7 +164,7 @@ body {
 
 .section-img {
   display: flex;
-  border: solid 2px rgb(255, 0, 179);
+  /* border: solid 2px rgb(255, 0, 179); */
 }
 
 .section-img img {
@@ -197,7 +197,7 @@ body {
 
 .section-img-sales img {
   height: auto;
-  width: 100%;
+  width: 33%;
 }
 
 .section-article-foot-name-sales {
@@ -245,13 +245,13 @@ body {
 .articles-container-news {
   display: flex;
   flex-direction: column;
-  border: solid 2px rgb(7, 212, 226);
+  /* border: solid 2px rgb(7, 212, 226); */
 }
 
 .section-news {
   display: flex;
   flex-direction: column;
-  border: solid 2px greenyellow;
+  /* border: solid 2px greenyellow; */
 }
 
 .news-title {
@@ -261,7 +261,7 @@ body {
   font-weight: 800;
   align-items: center;
   justify-content: center;
-  border: solid 2px peru;
+  /* border: solid 2px peru; */
 }
 
 .news-description {
@@ -275,7 +275,7 @@ body {
   padding-top: 0.5rem;
   padding-left: 2rem;
   padding-right: 2rem;
-  border: solid 2px purple;
+  /* border: solid 2px purple; */
 }
 
 /* ***********   FOOTER   *************************************************** */
@@ -420,7 +420,7 @@ footer {
     display: flex;
     flex-direction: row;
     align-items: center;
-    border: solid 2px rgb(7, 212, 226);
+    /* border: solid 2px rgb(7, 212, 226); */
   }
 
   .news-title {
