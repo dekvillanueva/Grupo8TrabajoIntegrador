@@ -1,49 +1,17 @@
 const express = require('express');
 const app = express();
-const  port = 3000;
+const { engine } = require('express/lib/application');
 const path = require('path');
+const mainRoutes = require("./routers/main")
+const  port = 3000;
+
 
 // Views
-const views = path.join(__dirname, 'views/');
+app.set('views', path.join(__dirname, 'views'));
+app.set("view engine", "ejs");
 
-// Public
-const public = path.join(__dirname, 'public/');
-
-// HTTP routes
-const httpRaiz = '/';
-const httpHome ='/home';
-const httpLogin ='/login';
-const httpRegister ='/register';
-const httpCart = '/cart';
-
-// HTML
-const homeHtml = 'home.html';
-const loginHtml = 'login.html';
-const registerHtml = 'register.html';
-const cartHtml = 'cart.html';
-
-// Define the static file path
-app.use(express.static(__dirname + '/public/'));
-
-app.get(httpRaiz, (req, res) => {
-    res.sendFile(path.join(views, homeHtml))
-});
-
-app.get(httpHome, (req,res) =>{
-    res.sendFile(path.join(views, homeHtml))
-});
-
-app.get(httpLogin, (req,res) =>{
-    res.sendFile(path.join(views, loginHtml))
-});
-
-app.get(httpRegister, (req,res) =>{
-    res.sendFile(path.join(views, registerHtml))
-});
-
-app.get(httpCart, (req,res) =>{
-    res.sendFile(path.join(views, cartHtml))
-})
+app.use(express.static(path.join(__dirname, 'public')));
+app.use('/', mainRoutes);
 
 app.listen(port, () =>{
 

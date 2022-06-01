@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!--
+ ***********   HEAD   **************************************************
+-->
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="css/cartStyle.css"
+    />
+    <title>ESSENSOR Carrito</title>
+  </head>
+
+  <!--
+ ***********   BODY  **************************************************
+-->
+
+  <body>
+
+    <!--
+ ***********   HEADER   ***********************************************
+-->
+<div>
+    <%- include('partials/header.ejs')%>
+</div>
+
+    <main>
+      <div class="main-container">
+        <div class="card-product">
+          <div class="card-product-product-image">
+            <img src="assets/images/flow-sensor.png" alt="imagen de producto" />
+          </div>
+          <div class="card-product-product-description">
+            <div class="card-product-first-row">
+              <label>Sensor de flujo</label>
+              <button>
+                <i class="material-icons">delete</i>
+              </button>
+            </div>
+            <div class="card-product-second-row">
+              <select name="quantity" id="sCantidad">
+                <option value="1">1 u</option>
+                <option value="2">2 u</option>
+                <option value="3">3 u</option>
+                <option value="4">4 u</option>
+                <option value="5">5 u</option>
+              </select>
+              <label>$ 7721.12</label>
+            </div>
+          </div>
+        </div>
+        <div class="card-product">
+          <div class="card-product-product-image">
+            <img src="assets/images/encoder.png" alt="imagen de producto" />
+          </div>
+          <div class="card-product-product-description">
+            <div class="card-product-first-row">
+              <label>Encoder</label>
+              <button>
+                <i class="material-icons">delete</i>
+              </button>
+            </div>
+            <div class="card-product-second-row">
+              <select name="quantity" id="sCantidad">
+                <option value="1">1 u</option>
+                <option value="2">2 u</option>
+                <option value="3">3 u</option>
+                <option value="4">4 u</option>
+                <option value="5">5 u</option>
+              </select>
+              <label>$ 7721.12</label>
+            </div>
+          </div>
+        </div>
+        <div class="card-product">
+          <div class="card-product-product-image">
+            <img
+              src="assets/images/temperature-sensor.png"
+              alt="imagen de producto"
+            />
+          </div>
+          <div class="card-product-product-description">
+            <div class="card-product-first-row">
+              <label>Sensor de Temperatura</label>
+              <button>
+                <i class="material-icons">delete</i>
+              </button>
+            </div>
+            <div class="card-product-second-row">
+              <select name="quantity" id="sCantidad">
+                <option value="1">1 u</option>
+                <option value="2">2 u</option>
+                <option value="3">3 u</option>
+                <option value="4">4 u</option>
+                <option value="5">5 u</option>
+              </select>
+              <label>$ 7721.12</label>
+            </div>
+          </div>
+        </div>
+        <div class="card-product">
+          <div class="card-product-product-image">
+            <img src="assets/images/flow-sensor.png" alt="imagen de producto" />
+          </div>
+          <div class="card-product-product-description">
+            <div class="card-product-first-row">
+              <label>Sensor de flujo</label>
+              <button>
+                <i class="material-icons">delete</i>
+              </button>
+            </div>
+            <div class="card-product-second-row">
+              <select name="quantity" id="sCantidad">
+                <option value="1">1 u</option>
+                <option value="2">2 u</option>
+                <option value="3">3 u</option>
+                <option value="4">4 u</option>
+                <option value="5">5 u</option>
+              </select>
+              <label>$ 7721.12</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="cart-bottom-row">
+          <div class="cart-bottom-row-subtotal-label">
+            <label for="Total"> Subtotal $ 10000.00</label>
+          </div>
+          <div class="cart-bottom-row-descount-label">
+            <label for="Descount"> Desc. %15 ($1500.00)</label>
+          </div>
+          <div class="cart-bottom-row-total-label">
+            <label for="Total"> Total $ 8500.00</label>
+          </div>
+          <div class="cart-bottom-row-button-comprar">
+            <button>Comprar</button>
+          </div>
+        </div>
+      </div>
+    </main>
+<!--
+ ***********   FOOTER   **********************************************************
+-->
+    <div>
+        <%- include('partials/footer.ejs')%>
+    </div>
+
+  </body>
+</html>
