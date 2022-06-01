@@ -103,6 +103,9 @@ body {
   display: flex;
   width: 50%;
   margin: 0.25% 10%;
+  vertical-align: middle;
+  white-space: nowrap;
+  position: relative;
 }
 
 .toolbar-search-in-text {
@@ -197,7 +200,7 @@ body {
 
 .section-img-sales img {
   height: auto;
-  width: 33%;
+  width: 100%;
 }
 
 .section-article-foot-name-sales {
@@ -251,6 +254,7 @@ body {
 .section-news {
   display: flex;
   flex-direction: column;
+  align-items: center;
   /* border: solid 2px greenyellow; */
 }
 
