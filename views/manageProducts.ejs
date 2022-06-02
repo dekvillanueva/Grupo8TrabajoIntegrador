@@ -8,11 +8,11 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 
-    <link rel="stylesheet" href="css/loginStyle.css" />
+    <link rel="stylesheet" href="css/manageProductsStyle.css" />
     <title>ESSENSOR Login</title>
 </head>
 
@@ -24,49 +24,48 @@
     <!--
  ***********   HEADER   ***********************************************
 -->
-    <div>
-        <%- include('partials/header.ejs')%>
-    </div>
+    <%- include('partials/header.ejs')%>
 
-    <form action="">
-
-        <main>
+    <!--
+ ***********   MAIN   ***********************************************
+-->
+    <main>
+        <form action="">
             <div class="main-container">
                 <div class="main-container-title">
                     <h2 class="title">Cargar / Modificar producto</h2>
                 </div>
 
-                <div class="main-container-text-inputs-email">
+                <div class="main-container-text-inputs">
                     <div class="rounder-container">
                         <label for="productsName">Nombre del producto</label>
                         <div class="text-input-with-icon">
-                            <input class="text-inputs" type="text" name="user-email" placeholder="products name"
+                            <input class="text-inputs" type="text" name="user-email" placeholder="Nombre del producto"
                                 id="email" required />
                         </div>
                     </div>
                 </div>
-                <div class="main-container-text-inputs-clave">
+                <div class="main-container-text-inputs">
                     <div class="rounder-container">
                         <label for="productDescription">Descripción del producto</label>
-                        <div class="text-input-with-icon">
-                            <textarea name="" id="" cols="30" rows="5" class="text-inputs"
-                                placeholder="Products description" required>
+                        <div>
+                            <textarea name="" id="" cols="30" rows="5" placeholder="Products description" required>
                             </textarea>
                         </div>
                     </div>
                 </div>
-                <div class="main-container-text-inputs-clave">
+                <div class="main-container-text-inputs">
                     <div class="rounder-container">
                         <label for="imagen">Imagen</label>
-                        <div class="text-input-with-icon">
-                            <input class="text-inputs" type="image" name="image" id="imagen" required />
+                        <div>
+                            <input class="text-inputs" type="image" name="image" id="imagen" value="Cargar imagen" />
                         </div>
                     </div>
                 </div>
-                <div class="main-container-text-inputs-clave">
+                <div class="main-container-text-inputs">
                     <div class="rounder-container">
                         <label for="categoria">Categoría</label>
-                        <div class="text-input-with-icon">
+                        <div>
                             <select name="select">
                                 <option value="Cat1">Categoría 1</option>
                                 <option value="Cat2" selected>Categoría 2</option>
@@ -76,34 +75,30 @@
                     </div>
                 </div>
 
-                <div class="main-container-text-inputs-clave">
+                <div class="main-container-text-inputs">
                     <div class="rounder-container">
                         <label for="precio">Precio</label>
-                        <div class="text-input-with-icon">
-                            <input class="text-inputs" type="text" name="precio" id="precio" placeholder="$precio" required />
+                        <div>
+                            <input class="text-inputs" type="text" name="precio" id="precio" placeholder="$precio"
+                                required />
                         </div>
                     </div>
                 </div>
 
                 <div class="main-container-text-inputs-button">
-                    <button class="button-iniciar" type="button" onclick="alert('Producto guardado correctamente!')">
-                        Guardar producto
-                    </button>
-                    <button class="button-iniciar" type="button" onclick="alert('Producto modificado correctamente!')">
-                        Modificar producto
-                    </button>
+                    <input type="submit" value="Guardar producto" class="button"
+                        onclick="alert('Producto guardado correctamente!')" />
+                    <input type="submit" value="Modificar producto" class="button"
+                        onclick="alert('Producto modificado correctamente!')" />
                 </div>
             </div>
-        </main>
-
-    </form>
+        </form>
+    </main>
 
     <!--
  ***********   FOOTER   **********************************************************
 -->
-    <div>
-        <%- include('partials/footer.ejs')%>
-    </div>
+    <%- include('partials/footer.ejs')%>
 
 </body>
 
