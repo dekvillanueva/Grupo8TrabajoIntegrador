@@ -1,53 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-  <!--
+<!--
  ***********   HEAD   **************************************************
 -->
+<div>
+  <%- include('partials/head.ejs')%>
+  <link rel="stylesheet" href="css/loginStyle.css" />
+  <title>ESSENSOR Register</title>
+</div>
 
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-
-    <link rel="stylesheet" href="css/loginStyle.css" />
-    <title>ESSENSOR Login</title>
-  </head>
-
-  <!--
+<!--
  ***********   BODY   *************************************************
 -->
 
-  <body>
-    <!--
+<body>
+  <!--
  ***********   HEADER   ***********************************************
 -->
-<div>
+  <div>
     <%- include('partials/header.ejs')%>
-</div>
-
-    <main>
+  </div>
+  <main>
+    <form action="">
       <div class="main-container">
         <div class="main-container-title">
           <h2 class="title">Bienvenido</h2>
         </div>
         <div class="main-container-option-select">
           <div class="main-container-option-select-signout">
-            <input
-              type="radio"
-              name="option"
-              id="signout"
-              value="signout"
-              checked
-            />
+            <input type="radio" name="option" id="signout" value="signout" checked />
             <label for="signout">
               <a href="">Crear cuenta</a>
             </label>
@@ -55,7 +36,7 @@
           <div class="main-container-option-select-signin">
             <input type="radio" name="option" id="signin" value="signin" />
             <label for="signin">
-              <a href="">Iniciar sesión</a>
+              <a href="/login">Iniciar sesión</a>
             </label>
           </div>
         </div>
@@ -65,14 +46,8 @@
             <label for="email">Email</label>
             <div class="text-input-with-icon">
               <i class="material-icons">email</i>
-              <input
-                class="text-inputs"
-                type="text"
-                name="user-email"
-                placeholder="example@gmail.com"
-                id="email"
-                required
-              />
+              <input class="text-inputs" type="text" name="user-email" placeholder="example@gmail.com" id="email"
+                required />
             </div>
           </div>
         </div>
@@ -81,13 +56,7 @@
             <label for="password">Clave</label>
             <div class="text-input-with-icon">
               <i class="material-icons">lock</i>
-              <input
-                class="text-inputs"
-                type="password"
-                name="user-password"
-                id="password"
-                required
-              />
+              <input class="text-inputs" type="password" name="user-password" id="password" required />
             </div>
           </div>
         </div>
@@ -96,34 +65,26 @@
             <label for="repit-password">Repetir clave</label>
             <div class="text-input-with-icon">
               <i class="material-icons">lock</i>
-              <input
-                class="text-inputs"
-                type="password"
-                name="user-repit-password"
-                id="repit-password"
-                required
-              />
+              <input class="text-inputs" type="password" name="user-repit-password" id="repit-password" required />
             </div>
           </div>
         </div>
         <div class="main-container-text-inputs-button">
-          <button
-            class="button-iniciar"
-            type="button"
-            onclick="alert('Prueba de button click Alert!')"
-          >
+          <button class="button-iniciar" type="button" onclick="alert('Prueba de button click Alert!')">
             Crear cuenta
           </button>
         </div>
       </div>
-    </main>
+    </form>
+  </main>
 
-    <!--
+  <!--
  ***********   FOOTER   **********************************************************
 -->
-    <div>
-        <%- include('partials/footer.ejs')%>
-    </div>
+  <div>
+    <%- include('partials/footer.ejs')%>
+  </div>
 
-  </body>
+</body>
+
 </html>

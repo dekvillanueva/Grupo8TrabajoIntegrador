@@ -14,17 +14,16 @@ body {
 .toolbar {
   height: 20vh;
   width: 100%;
+  height: 7rem;
+  padding-left: 0.5rem;
+  padding-right: 00.5rem;
 }
 
 .toolbar-title {
   display: flex;
   justify-content: left;
+  width: 100%;
   height: 50%;
-}
-
-.toolbar-title-in {
-  width: 20%;
-  height: 100%;
 }
 
 .toolbar-title-in-logo {
@@ -39,91 +38,45 @@ body {
   height: auto;
 }
 
-.toolbar-title-in-empty {
+.toolbar-buttons{
   display: flex;
-  width: 30%;
+  width: 70%;
   height: 100%;
-  align-items: center;
+  justify-content: right;
 }
 
-.toolbar-title-in-login {
-  display: flex;
-  width: 30%;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
+.toolbar-buttons a {
+  padding-left: 1rem;
 }
 
-.toolbar-title-in-login button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 80%;
-  height: 50%;
-  max-width: 150px;
-  align-items: center;
-  border-radius: 5px;
+.toolbar-buttons i{
+  color: #fff;
+  font-size: 1.5rem;
+  margin-top: 1rem;
 }
 
-.toolbar-title-in-login img {
-  display: flex;
-  padding-left: 50%;
-  height: 70%;
-  width: auto;
-  justify-content: end;
-}
-
-.toolbar-title-in-cart {
-  display: flex;
-  width: 10%;
-  height: 100%;
-  justify-content: center;
-  align-items: center;
-}
-
-.toolbar-title-in-cart button {
-  width: 80%;
-  height: 50%;
-  justify-content: center;
-  align-items: center;
-}
-
-.toolbar-title-in-cart img {
-  height: 90%;
-  width: auto;
-}
 
 .toolbar-search {
+  margin-top: 0.5rem;
   display: flex;
-  justify-content: center;
-  height: 25%;
+  border-radius: 5px;
+  background: #fff;
+  width: 100%;
 }
 
-.toolbar-search-in {
-  display: flex;
-  width: 50%;
-  margin: 0.25% 10%;
-  vertical-align: middle;
-  white-space: nowrap;
-  position: relative;
-}
 
-.toolbar-search-in-text {
-  justify-content: left;
+.toolbar-search input[type="text"]{
   width: 95%;
+  height: 1.5rem;
+  padding-left: 1rem;
+  border: none;
+  background-color: #fff;
 }
 
-.toolbar-search-in-button {
-  display: flex;
-  justify-content: center;
+.toolbar-search button {
   width: 5%;
-}
-
-.toolbar-search-in-button-icon {
-  flex-grow: 0;
-  flex-shrink: 0.5;
-  width: 20px;
-  height: 20px;
+  border: none;
+  background-color: #fff;
 }
 
 .toolbar-links {
