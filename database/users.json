@@ -1,0 +1,19 @@
+[
+    {
+        "id": 1,
+        "userName": "Ichimoku",
+        "email": "ichimoku@essensor.com",
+        "password": "loquesea",
+        "image":"/", 
+        "admin": true         
+    },
+
+    {
+        "id": 2,
+        "userName": "Kobe",
+        "email": "kobe@essensor.com",
+        "password": "loquesea",
+        "image":"/", 
+        "admin": true         
+    }
+]
