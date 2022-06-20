@@ -30,7 +30,7 @@
  ***********   MAIN   ***********************************************
 -->
     <main>
-        <form action="">
+        <form action="/productsList" method="post">
             <div class="main-container">
                 <div class="main-container-title">
                     <h2 class="title">Cargar / Modificar producto</h2>
@@ -38,10 +38,10 @@
 
                 <div class="main-container-text-inputs">
                     <div class="rounder-container">
-                        <label for="productsName">Nombre del producto</label>
+                        <label for="productName">Nombre del producto</label>
                         <div class="text-input-with-icon">
-                            <input class="text-inputs" type="text" name="user-email" placeholder="Nombre del producto"
-                                id="productsName" required />
+                            <input class="text-inputs" type="text" name="productName" placeholder="Nombre del producto"
+                                id="productName" required />
                         </div>
                     </div>
                 </div>
@@ -49,7 +49,7 @@
                     <div class="rounder-container">
                         <label for="productDescription">Descripción del producto</label>
                         <div>
-                            <textarea name="productDescription" id="" cols="30" rows="5" placeholder="Products description" required>
+                            <textarea name="productDescription" id="" cols="30" rows="5" placeholder="Products description">
                             </textarea>
                         </div>
                     </div>
@@ -80,14 +80,13 @@
                         <label for="precio">Precio</label>
                         <div>
                             <input class="text-inputs" type="text" name="precio" id="precio" placeholder="$precio"
-                                required />
+                                />
                         </div>
                     </div>
                 </div>
 
                 <div class="main-container-text-inputs-button">
-                    <input type="submit" value="Guardar producto" class="button"
-                        onclick="alert('Producto guardado correctamente!')" />
+                    <input type="submit" value="Guardar producto" class="button"/>
                     <input type="submit" value="Modificar producto" class="button"
                         onclick="alert('Producto modificado correctamente!')" />
                 </div>
