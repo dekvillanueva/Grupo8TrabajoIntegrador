@@ -6,7 +6,7 @@ const cartController = require("../controllers/cartController");
 
 const router = express.Router();
 
-router.get('/', homeController.home);
+router.get('/', homeController.home,);
 router.get('/login', loginController.login);
 router.get('/register', registerController.register);
 router.get('/cart', cartController.cart);
