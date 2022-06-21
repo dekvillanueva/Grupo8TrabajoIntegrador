@@ -4,7 +4,6 @@ const path = require('path');
 const productsFilePath = path.join(__dirname, '../database/products.json');
 const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 
-
 const manageProductsController = {
   manageProducts: (req, res) => {
     res.render("manageProducts");
@@ -22,6 +21,11 @@ const manageProductsController = {
     let producto = products.find((p) => p.id == id);
     res.render("productDetail", { producto: producto });
   },
+
+  //   detail: (req, res) => {
+  
+  //   res.render("productDetail");
+  // },
 };
 
 module.exports = manageProductsController;

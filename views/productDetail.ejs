@@ -1,53 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-  <!--
- ***********   HEAD   **************************************************
+<div>
+  <%- include('partials/head.ejs')%>
+  <link rel="stylesheet" href="/css/homeStyle.css" />
+  <title>ESSENSOR Home</title>
+</div>
+
+<!--
+ ***********  TOOLBAR   ************************************************
 -->
 
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
+  <header class="toolbar blue-color">
+    <div class="toolbar-title">
+      <div class="toolbar-title-in-logo">
+        <img src="assets/images/logo.png" alt="" />
+      </div>
+      <div class="toolbar-buttons">
+        <a href="/login">
+          <i class="fa-solid fa-user"></i>
+        </a>
 
-    <link rel="stylesheet" href="css/manageProductsStyle.css" />
-    <title>ESSENSOR Product details</title>
-  </head>
+        <a href="">
+          <i class="fa-solid fa-cart-shopping"></i>
+        </a>
+      </div>
+    </div>
+    
+    <div class="toolbar-search">
+      <form action="" class="search-form">
+        <input type="text" name="search-words" placeholder="Buscar..." />
+        <button>
+          <i class="fa-solid fa-search"></i>
+        </button>
+      </form>
+    </div>
+
+    <div class="toolbar-links">
+      <a class="white-color" href="/">Inicio</a>
+      <a class="white-color" href="products.html">Productos</a>
+      <a class="white-color" href="solutions.html">Soluciones</a>
+      <a class="white-color" href="aboutUs.html">Nosotros</a>
+    </div>
+  </header>
 
   <!--
- ***********   BODY   *************************************************
+ ***********   BODY   ************************************************
 -->
 
-  <body>
+
     <!--
  ***********   HEADER   ***********************************************
 -->
-    <%- include('partials/header.ejs')%>
 
     <!--
  ***********   MAIN   ***********************************************
 -->
-    <main>
-        <div>
-			<div>
-				<h2 class="products-title">Detalle del producto: <%= product.name %></h2>
-			</div>
-		</div>
-    </main>
+
 
     <!--
- ***********   FOOTER   **********************************************************
+ ***********   FOOTER   ***********************************************
 -->
     <%- include('partials/footer.ejs')%>
   </body>
