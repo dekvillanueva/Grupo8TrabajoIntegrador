@@ -22,5 +22,7 @@ app.set("view engine", "ejs");
 
 
 app.listen(port, () =>{
+    console.log(__dirname
+        );
 
 })

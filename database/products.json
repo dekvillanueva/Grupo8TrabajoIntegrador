@@ -2,7 +2,7 @@
     "id":1,
     "name": "PT100",
     "description": "Platinum resistance temperature sensor built into steel tube V4A, 1/2 inch, suitable for installation in pipes. Thermal response time T0,9 in the air 255 s, in water  45 s. Suitable for transmission in 2- or 3-wire technique. Weight 120 g Dimensions: 110 mm insertion depth", 
-    "image": "/public/assets/images/temperature-sensor.png",
+    "image": "/assets/images/temperature-sensor.png",
     "category": "Sensores de temperatura",
     "price": 35000,
     "discount": 10
@@ -12,7 +12,7 @@
     "id":2,
     "name": "Insertion Style Flow Sensors - 220 Series",
     "description": "220 Series sensors are specifically designed for installation in underground vaults that might be subjected to flooding. As the liquid flow turns the impeller, a low impedance 8V DC square wave signal is transmitted with a frequency proportional to the flow rate. This signal can travel up to 2,000 feet between the sensor and the display unit without the need for amplification.",
-    "image": "/public/assets/images/flow-sensor.png",
+    "image": "/assets/images/flow-sensor.png",
     "category": "Sensores de flujo",
     "price": 42000,
     "discount": 5
@@ -22,7 +22,7 @@
     "id":3,
     "name": "Dräger Sensor® XS (HF/HCI, H2O2, N2H4)",
     "description": "Electrochemical sensor - Monitoring of toxic gases - Compatible with Dräger X-am 5100 - Measuring range: in ppm",
-    "image": "/public/assets/images/gas-sensor.png",
+    "image": "/assets/images/gas-sensor.png",
     "category": "Sensores de gas",
     "price": 63000,
     "discount": 8
@@ -32,7 +32,7 @@
     "id":4,
     "name": "Model 15T/H",
     "description": "High-performance, economical encoder - Low profile - 25.4 mm height and 38 mm diameter - Thru-bore or blind hollow bore with bores up to 10 mm - Simple, innovative flex mounting system (Global Mounting Standards) Up to 12-pole commutation optional for brushless motor control",
-    "image": "/public/assets/images/encoder.png",
+    "image": "/assets/images/encoder.png",
     "category": "Encoders",
     "price": 12000,
     "discount": 8

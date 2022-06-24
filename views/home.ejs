@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <link rel="stylesheet" href="css/homeStyle.css" />
+<link rel="stylesheet" href="css/homeStyle.css" />
 
 <!--***********  HEAD   ************************************************-->
-<%- include('partials/head.ejs', {title: 'ESSENSOR - Inicio'})%>
+<%- include('partials/head.ejs', {title: 'ESSENSOR - Inicio' })%>
 
   <body>
 
@@ -35,66 +35,11 @@
           <div class="section-title">
             <h2>OFERTAS</h2>
           </div>
+
           <div class="articles-container">
-            <article class="section-article display-1">
-              <div class="section-img section-img-sales ">
-                <img src="assets/images/flow-sensor.png" alt="flow-sensor.png" />
-              </div>
-              <div class="section-article-foot-name-sales">
-                <h4>Sensores de flujo</h4>
-              </div>
-              <div class="section-article-foot section-article-foot-price">
-                <h5>Desde $10.500</h5>
-              </div>
-              <div class="section-article-foot section-article-foot-discount">
-                <h5>20% OFF</h5>
-              </div>
-            </article>
-
-            <article class="section-article display-2">
-              <div class="section-img section-img-sales">
-                <img src="assets/images/gas-sensor.png" alt="gas-sensor.png" />
-              </div>
-              <div class="section-article-foot-name-sales">
-                <h4>Sensores de gases</h4>
-              </div>
-              <div class="section-article-foot section-article-foot-price">
-                <h5>Desde $25.800</h5>
-              </div>
-              <div class="section-article-foot section-article-foot-discount">
-                <h5>15% OFF</h5>
-              </div>
-            </article>
-
-            <article class="section-article display-3">
-              <div class="section-img section-img-sales">
-                <img src="assets/images/temperature-sensor.png" alt="flow-sensor.png" />
-              </div>
-              <div class="section-article-foot-name-sales">
-                <h4>Sensores de temperatura</h4>
-              </div>
-              <div class="section-article-foot section-article-foot-price">
-                <h5>Desde $35.200</h5>
-              </div>
-              <div class="section-article-foot section-article-foot-discount">
-                <h5>8% OFF</h5>
-              </div>
-            </article>
-
-            <article class="section-article display-4">
-              <div class="section-img section-img-sales">
-                <img src="assets/images/encoder.png" alt="encoder.png" />
-              </div>
-              <div class="section-article-foot-name-sales">
-                <h4>Encoders</h4>
-              </div>
-              <div class="section-article-foot section-article-foot-price">
-                <h5>Desde $14.150</h5>
-              </div>
-              <div class="section-article-foot section-article-foot-discount">
-                <h5>5% OFF</h5>
-              </div>
-            </article>
+            <% for(let i=0; i<productos.length; i++){%>
+              <%- include('partials/articleCard.ejs', {product: productos[i]})%>
+                <% } %>
           </div>
         </section>
 
