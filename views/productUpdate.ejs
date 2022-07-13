@@ -24,16 +24,16 @@
     <!--
  ***********   HEADER   ***********************************************
 -->
-    <%- include('partials/header.ejs')%>
+<%- include('partials/head.ejs', {title: 'ESSENSOR - Update product' })%>
 
     <!--
  ***********   MAIN   ***********************************************
 -->
     <main>
-        <form action="/productsList" method="post">
+        <form action="/editProduct" method="post">
             <div class="main-container">
                 <div class="main-container-title">
-                    <h2 class="title">Cargar / Modificar producto</h2>
+                    <h2 class="title">Modificar producto</h2>
                 </div>
 
                 <div class="main-container-text-inputs">
@@ -86,9 +86,7 @@
                 </div>
 
                 <div class="main-container-text-inputs-button">
-                    <input type="submit" value="Guardar producto" class="button"/>
-                    <input type="submit" value="Modificar producto" class="button"
-                        onclick="alert('Producto modificado correctamente!')" />
+                    <input type="submit" value="Modificar producto" class="button"/>
                 </div>
             </div>
         </form>

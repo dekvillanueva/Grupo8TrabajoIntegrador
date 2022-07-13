@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <div>
-  <%- include('partials/head.ejs')%>
-  <link rel="stylesheet" href="/css/homeStyle.css" />
-  <title>ESSENSOR Home</title>
+  <%- include('partials/head.ejs', {title: 'ESSENSOR - Product detail' })%>
+    <link rel="stylesheet" href="/css/homeStyle.css" />
+    <title>ESSENSOR Home</title>
 </div>
 
 <!--
  ***********  TOOLBAR   ************************************************
 -->
 
+<body>
   <header class="toolbar blue-color">
     <div class="toolbar-title">
       <div class="toolbar-title-in-logo">
@@ -25,7 +26,7 @@
         </a>
       </div>
     </div>
-    
+
     <div class="toolbar-search">
       <form action="" class="search-form">
         <input type="text" name="search-words" placeholder="Buscar..." />
@@ -48,18 +49,19 @@
 -->
 
 
-    <!--
+  <!--
  ***********   HEADER   ***********************************************
 -->
 
-    <!--
+  <!--
  ***********   MAIN   ***********************************************
 -->
 
 
-    <!--
+  <!--
  ***********   FOOTER   ***********************************************
 -->
-    <%- include('partials/footer.ejs')%>
-  </body>
+  <%- include('partials/footer.ejs')%>
+</body>
+
 </html>

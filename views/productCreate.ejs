@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+ ***********   HEAD   **************************************************
+-->
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+    <link rel="stylesheet" href="css/manageProductsStyle.css" />
+    <title>ESSENSOR Login</title>
+</head>
+
+<!--
+ ***********   BODY   *************************************************
+-->
+
+<body>
+    <!--
+ ***********   HEADER   ***********************************************
+-->
+<%- include('partials/head.ejs', {title: 'ESSENSOR - Create product' })%>
+
+    <!--
+ ***********   MAIN   ***********************************************
+-->
+    <main>
+        <form action="/productCreate" method="post">
+            <div class="main-container">
+                <div class="main-container-title">
+                    <h2 class="title">Agregar producto</h2>
+                </div>
+
+                <div class="main-container-text-inputs">
+                    <div class="rounder-container">
+                        <label for="productName">Nombre del producto</label>
+                        <div class="text-input-with-icon">
+                            <input class="text-inputs" type="text" name="productName" placeholder="Nombre del producto"
+                                id="productName" required />
+                        </div>
+                    </div>
+                </div>
+                <div class="main-container-text-inputs">
+                    <div class="rounder-container">
+                        <label for="productDescription">Descripción del producto</label>
+                        <div>
+                            <textarea name="productDescription" id="" cols="30" rows="5" placeholder="Products description">
+                            </textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="main-container-text-inputs">
+                    <div class="rounder-container">
+                        <label for="imagen">Imagen</label>
+                        <div>
+                            <input class="text-inputs" type="image" name="image" id="imagen" value="Cargar imagen" />
+                        </div>
+                    </div>
+                </div>
+                <div class="main-container-text-inputs">
+                    <div class="rounder-container">
+                        <label for="categoria">Categoría</label>
+                        <div>
+                            <select name="select">
+                                <option value="Cat1">Categoría 1</option>
+                                <option value="Cat2" selected>Categoría 2</option>
+                                <option value="Cat3">Categoría 3</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="main-container-text-inputs">
+                    <div class="rounder-container">
+                        <label for="precio">Precio</label>
+                        <div>
+                            <input class="text-inputs" type="text" name="precio" id="precio" placeholder="$precio"
+                                />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="main-container-text-inputs-button">
+                    <input type="submit" value="Guardar producto" class="button"/>
+                </div>
+            </div>
+        </form>
+    </main>
+
+    <!--
+ ***********   FOOTER   **********************************************************
+-->
+    <%- include('partials/footer.ejs')%>
+
+</body>
+
+</html>

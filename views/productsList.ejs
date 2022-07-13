@@ -8,5 +8,10 @@
 </head>
 <body>
     
+    <div class="articles-container">
+        <% for(let i=0; i<products.length; i++){%>
+          <%- include('partials/articleCard.ejs', {product: products[i]})%>
+            <% } %>
+      </div>
 </body>
 </html>

@@ -3,6 +3,7 @@ const homeController = require("../controllers/homeController");
 const loginController = require("../controllers/loginController");
 const registerController = require("../controllers/registerController");
 const cartController = require("../controllers/cartController");
+const { application } = require("express");
 
 const router = express.Router();
 
