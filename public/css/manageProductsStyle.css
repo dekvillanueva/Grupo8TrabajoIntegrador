@@ -72,7 +72,19 @@
     color: #fff;
     border: none;
     border-radius: 30px;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
+    transition: .2s ease-in-out 0s;
+}
+
+.button:hover{
+    transform: scale(1.1);
+    transition: all 0.2s linear;
+    font-size: 0.95rem;
+}
+
+.button:active {
+    transform: scale(0.98);
+    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
 }
 
 img {

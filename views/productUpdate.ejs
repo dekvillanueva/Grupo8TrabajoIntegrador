@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 
-    <link rel="stylesheet" href="css/manageProductsStyle.css" />
+    <link rel="stylesheet" href="/css/manageProductsStyle.css" />
     <title>ESSENSOR Login</title>
 </head>
 
@@ -30,7 +30,7 @@
  ***********   MAIN   ***********************************************
 -->
     <main>
-        <form action="/editProduct" method="post">
+        <form action="/productUpdate/<%= product.id %>?_method=PUT" method="post">
             <div class="main-container">
                 <div class="main-container-title">
                     <h2 class="title">Modificar producto</h2>
@@ -41,6 +41,7 @@
                         <label for="productName">Nombre del producto</label>
                         <div class="text-input-with-icon">
                             <input class="text-inputs" type="text" name="productName" placeholder="Nombre del producto"
+                                value="<%=product.name%>"
                                 id="productName" required />
                         </div>
                     </div>
@@ -49,8 +50,7 @@
                     <div class="rounder-container">
                         <label for="productDescription">Descripción del producto</label>
                         <div>
-                            <textarea name="productDescription" id="" cols="30" rows="5" placeholder="Products description">
-                            </textarea>
+                            <textarea name="productDescription" id="productDescription" cols="30" rows="5"><%=product.description%></textarea>
                         </div>
                     </div>
                 </div>
@@ -58,7 +58,8 @@
                     <div class="rounder-container">
                         <label for="imagen">Imagen</label>
                         <div>
-                            <input class="text-inputs" type="image" name="image" id="imagen" value="Cargar imagen" />
+                            <input class="text-inputs" type="image" name="image" accept=".jpg,.png" id="imagen" 
+                            src="<%=product.image%>" value="Cargar imagen" />
                         </div>
                     </div>
                 </div>
@@ -66,10 +67,13 @@
                     <div class="rounder-container">
                         <label for="categoria">Categoría</label>
                         <div>
-                            <select name="select">
-                                <option value="Cat1">Categoría 1</option>
-                                <option value="Cat2" selected>Categoría 2</option>
-                                <option value="Cat3">Categoría 3</option>
+                            <select name="category">
+                                <%for(category of categories){%>
+                                <option value="<%=category%>"
+                                    <% if(category==product.category){%>
+                                        selected = "selected"
+                                        <%}%> ><%=category%></option>
+                                <%}%>
                             </select>
                         </div>
                     </div>
@@ -79,14 +83,30 @@
                     <div class="rounder-container">
                         <label for="precio">Precio</label>
                         <div>
-                            <input class="text-inputs" type="text" name="precio" id="precio" placeholder="$precio"
+                            <input class="text-inputs" value="<%=product.price%>" type="text" name="price" id="precio" placeholder="$precio"
                                 />
                         </div>
                     </div>
                 </div>
 
+                <div class="main-container-text-inputs">
+                    <div class="rounder-container">
+                        <label for="descuento">Descuento</label>
+                        <div>
+                            <select name="discount">
+                                <%for(discount of discounts){%>
+                                <option value="<%=discount%>"
+                                    <% if(discount==product.discount){%>
+                                        selected = "selected"
+                                        <%}%> ><%=discount%></option>
+                                <%}%>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="main-container-text-inputs-button">
-                    <input type="submit" value="Modificar producto" class="button"/>
+                    <input type="submit" method="post" name="_method" value="Modificar producto" class="button"/>
                 </div>
             </div>
         </form>

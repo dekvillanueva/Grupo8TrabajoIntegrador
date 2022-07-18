@@ -25,10 +25,3 @@
 ### _-Continuar haciendo: Reuniones semanales / Plantear objetivos a corto plazo / Planificar en Trello/_ 
 ### _-Menos de: /_
 ### _-Dejar de hacer: Dilatar los tiempos/_
-
-## __Retrospectiva 5__
-### _-Comenzar a hacer:/_
-### _-Más de: Consultas a los profesores/_
-### _-Continuar haciendo: Reuniones semanales / Plantear objetivos a corto plazo / Planificar en Trello/_ 
-### _-Menos de: /_
-### _-Dejar de hacer: Dilatar los tiempos/_

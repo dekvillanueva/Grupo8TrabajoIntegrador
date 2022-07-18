@@ -30,7 +30,7 @@
  ***********   MAIN   ***********************************************
 -->
     <main>
-        <form action="/productCreate" method="post">
+        <form action="/productCreate" method="post" enctype="multipart/form-data">
             <div class="main-container">
                 <div class="main-container-title">
                     <h2 class="title">Agregar producto</h2>
@@ -58,7 +58,7 @@
                     <div class="rounder-container">
                         <label for="imagen">Imagen</label>
                         <div>
-                            <input class="text-inputs" type="image" name="image" id="imagen" value="Cargar imagen" />
+                            <input class="text-inputs" type="file" name="image" id="imagen" value="Cargar imagen" />
                         </div>
                     </div>
                 </div>
@@ -66,10 +66,10 @@
                     <div class="rounder-container">
                         <label for="categoria">Categoría</label>
                         <div>
-                            <select name="select">
-                                <option value="Cat1">Categoría 1</option>
-                                <option value="Cat2" selected>Categoría 2</option>
-                                <option value="Cat3">Categoría 3</option>
+                            <select name="category">
+                                <%for(category of categories){%>
+                                <option value="<%=category%>"><%=category%></option>
+                                <%}%>
                             </select>
                         </div>
                     </div>
@@ -79,8 +79,21 @@
                     <div class="rounder-container">
                         <label for="precio">Precio</label>
                         <div>
-                            <input class="text-inputs" type="text" name="precio" id="precio" placeholder="$precio"
-                                />
+                            <input class="text-inputs" type="number" min="1" max="99999" name="price" 
+                            required id="precio" placeholder="$precio"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="main-container-text-inputs">
+                    <div class="rounder-container">
+                        <label for="descuento">Descuento</label>
+                        <div>
+                            <select name="discount">
+                                <%for(discount of discounts){%>
+                                <option value="<%=discount%>"><%=discount%></option>
+                                <%}%>
+                            </select>
                         </div>
                     </div>
                 </div>

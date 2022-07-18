@@ -1,61 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-<div>
-  <%- include('partials/head.ejs', {title: 'ESSENSOR - Product detail' })%>
-    <link rel="stylesheet" href="/css/homeStyle.css" />
-    <title>ESSENSOR Home</title>
-</div>
+<link rel="stylesheet" href="/css/productDetailStyle.css" />
+
+<!--***********  HEAD   ************************************************-->
+
+<%- include('partials/head.ejs', {title: 'ESSENSOR - Product detail'})%>
 
 <!--
- ***********  TOOLBAR   ************************************************
--->
-
-<body>
-  <header class="toolbar blue-color">
-    <div class="toolbar-title">
-      <div class="toolbar-title-in-logo">
-        <img src="assets/images/logo.png" alt="" />
-      </div>
-      <div class="toolbar-buttons">
-        <a href="/login">
-          <i class="fa-solid fa-user"></i>
-        </a>
-
-        <a href="">
-          <i class="fa-solid fa-cart-shopping"></i>
-        </a>
-      </div>
-    </div>
-
-    <div class="toolbar-search">
-      <form action="" class="search-form">
-        <input type="text" name="search-words" placeholder="Buscar..." />
-        <button>
-          <i class="fa-solid fa-search"></i>
-        </button>
-      </form>
-    </div>
-
-    <div class="toolbar-links">
-      <a class="white-color" href="/">Inicio</a>
-      <a class="white-color" href="products.html">Productos</a>
-      <a class="white-color" href="solutions.html">Soluciones</a>
-      <a class="white-color" href="aboutUs.html">Nosotros</a>
-    </div>
-  </header>
-
-  <!--
  ***********   BODY   ************************************************
 -->
 
+<body>
 
-  <!--
- ***********   HEADER   ***********************************************
--->
+  <!--***********  TOOLBAR HEADER   ************************************************-->
+  <header>
+    <div class="header">
+      <img src="/assets/images/logo.png" alt="Essensor logo" />
+    </div>
+  </header>
 
-  <!--
- ***********   MAIN   ***********************************************
--->
+  <!--***********   MAIN   ***********************************************-->
+  <main>
+    <div class="main-container">
+      <div class="image-container">
+        <img src="<%= product.image %>" alt="imagen de producto">
+      </div>
+      <div class="product-description-container">
+        <div class="product-items-container">
+          <h2><%=product.name%></h4>
+          <h3>$ <%=product.price%></h3>
+          <h4><%=product.discount%> %</h5>
+          <p><%=product.description%></p>
+          <div class="buttons-container">
+              <a href="/productUpdate/<%=product.id%>">
+                <button class="button">Actualizar</button>
+              </a>
+              <form method="post" action="/productDelete/<%=product.id%>?_method=DELETE">
+                <input type="submit" name="_method" class="button" value="Eliminar">
+              </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
 
 
   <!--
