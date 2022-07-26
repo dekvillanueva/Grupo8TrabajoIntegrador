@@ -14,8 +14,8 @@
     "description": "220 Series sensors are specifically designed for installation in underground vaults that might be subjected to flooding. As the liquid flow turns the impeller, a low impedance 8V DC square wave signal is transmitted with a frequency proportional to the flow rate. This signal can travel up to 2,000 feet between the sensor and the display unit without the need for amplification.",
     "image": "/assets/images/flow-sensor.png",
     "category": "Sensores de flujo",
-    "price": 42000,
-    "discount": 5
+    "price": "42000",
+    "discount": "5"
   },
   {
     "id": 3,

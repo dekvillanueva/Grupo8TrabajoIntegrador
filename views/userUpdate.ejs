@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+ ***********   HEAD   **************************************************
+-->
+<div>
+  <%- include('partials/head.ejs', {title: 'ESSENSOR - Update user' })%>
+    <link rel="stylesheet" href="/css/loginStyle.css" />
+    <title>ESSENSOR Update user</title>
+</div>
+
+<!--
+ ***********   BODY   *************************************************
+-->
+
+<body>
+  <!--
+ ***********   HEADER   ***********************************************
+-->
+  <div>
+    <%- include('partials/header.ejs')%>
+  </div>
+  <main>
+    <form action="/userUpdate/<%= user.id %>?_method=PUT" method="post">
+      <div class="main-container">
+        <div class="main-container-title">
+          <h2 class="title">Actualizar datos de usuario</h2>
+        </div>
+        <div class="main-container-text-inputs-email">
+          <div class="rounder-container">
+            <label for="email">Nombre de usuario</label>
+            <div class="text-input-with-icon">
+              <i class="material-icons">person</i>
+              <input class="text-inputs" type="text" name="userName" id="userName"
+                required />
+            </div>
+          </div>
+        </div>
+        <div class="main-container-text-inputs-email">
+          <div class="rounder-container">
+            <label for="email">Email</label>
+            <div class="text-input-with-icon">
+              <i class="material-icons">email</i>
+              <input class="text-inputs" type="text" name="userEmail" placeholder="example@gmail.com" value="<%=user.email%>" id="email"
+                required />
+            </div>
+          </div>
+        </div>
+        <div class="main-container-text-inputs-clave">
+          <div class="rounder-container">
+            <label for="password">Clave</label>
+            <div class="text-input-with-icon">
+              <i class="material-icons">lock</i>
+              <input class="text-inputs" type="password" name="userPassword" id="password" required />
+            </div>
+          </div>
+        </div>
+        <div class="main-container-text-inputs-clave">
+          <div class="rounder-container">
+            <label for="repit-password">Repetir clave</label>
+            <div class="text-input-with-icon">
+              <i class="material-icons">lock</i>
+              <input class="text-inputs" type="password" name="userRepitPassword" id="repit-password" required />
+            </div>
+          </div>
+        </div>
+        <div class="main-container-text-inputs-image">
+          <div class="rounder-container">
+            <label for="imagen">Imagen</label>
+            <div>
+              <input class="text-inputs" type="file" name="avatar" id="imagen" src="<%=user.avatar%>"
+                value="Por favor selecciones una imagen en formato .jpeg, .jpg, .png, .gif" />
+            </div>
+          </div>
+        </div>
+        <div class="main-container-text-inputs-button">
+          <input class="button-iniciar" type="submit" value="Actualizar usuario" />
+        </div>
+      </div>
+    </form>
+  </main>
+
+  <!--
+ ***********   FOOTER   **********************************************************
+-->
+  <div>
+    <%- include('partials/footer.ejs')%>
+  </div>
+</body>
+
+</html>

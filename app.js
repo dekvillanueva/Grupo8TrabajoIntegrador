@@ -4,6 +4,7 @@ const { engine } = require('express/lib/application');
 const path = require('path');
 const mainRoutes = require("./routers/main")
 const productRouter = require("./routers/productRoutes");
+const userRouter = require("./routers/userRoutes");
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 
@@ -17,6 +18,7 @@ app.use(bodyParser.json());
 app.use(methodOverride('_method'));
 app.use('/', mainRoutes);
 app.use('/', productRouter);
+app.use('/', userRouter);
 
 
 // Views

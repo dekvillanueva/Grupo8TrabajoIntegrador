@@ -21,7 +21,7 @@
     <%- include('partials/header.ejs')%>
   </div>
   <main>
-    <form action="">
+    <form action="/userRegister" method="POST" enctype="multipart/form-data">
       <div class="main-container">
         <div class="main-container-title">
           <h2 class="title">Bienvenido</h2>
@@ -40,13 +40,22 @@
             </label>
           </div>
         </div>
-
+        <div class="main-container-text-inputs-email">
+          <div class="rounder-container">
+            <label for="email">Nombre de usuario</label>
+            <div class="text-input-with-icon">
+              <i class="material-icons">person</i>
+              <input class="text-inputs" type="text" name="userName" id="userName"
+                required />
+            </div>
+          </div>
+        </div>
         <div class="main-container-text-inputs-email">
           <div class="rounder-container">
             <label for="email">Email</label>
             <div class="text-input-with-icon">
               <i class="material-icons">email</i>
-              <input class="text-inputs" type="text" name="user-email" placeholder="example@gmail.com" id="email"
+              <input class="text-inputs" type="text" name="userEmail" placeholder="example@gmail.com" id="email"
                 required />
             </div>
           </div>
@@ -56,7 +65,7 @@
             <label for="password">Clave</label>
             <div class="text-input-with-icon">
               <i class="material-icons">lock</i>
-              <input class="text-inputs" type="password" name="user-password" id="password" required />
+              <input class="text-inputs" type="password" name="userPassword" id="password" required />
             </div>
           </div>
         </div>
@@ -65,26 +74,20 @@
             <label for="repit-password">Repetir clave</label>
             <div class="text-input-with-icon">
               <i class="material-icons">lock</i>
-              <input class="text-inputs" type="password" name="user-repit-password" id="repit-password" required />
+              <input class="text-inputs" type="password" name="userRepitPassword" id="repit-password" required />
             </div>
           </div>
         </div>
         <div class="main-container-text-inputs-image">
           <div class="rounder-container">
-            <label for="user-image">
-              Imagen de perfil
-              <div class="text-input-with-icon">
-                <i class="material-icons">image</i>
-                <input type="file" name="user-image" id="user-image" class="inputfile" />
-                <label for="user-image">Seleccione una imagen</label>
-              </div>
-            </label>
+            <label for="imagen">Imagen</label>
+            <div>
+              <input class="text-inputs" type="file" name="avatar" id="imagen" value="Por favor selecciones una imagen en formato .jpeg, .jpg, .png, .gif" />
+            </div>
           </div>
         </div>
         <div class="main-container-text-inputs-button">
-          <button class="button-iniciar" type="button" onclick="alert('Prueba de button click Alert!')">
-            Crear cuenta
-          </button>
+          <input class="button-iniciar" type="submit" value="Crear cuenta" />
         </div>
       </div>
     </form>
@@ -96,7 +99,6 @@
   <div>
     <%- include('partials/footer.ejs')%>
   </div>
-
 </body>
 
 </html>

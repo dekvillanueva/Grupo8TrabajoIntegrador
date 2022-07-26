@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="/css/productDetailStyle.css" />
+
+<!--***********  HEAD   ************************************************-->
+
+<%- include('partials/head.ejs', {title: 'ESSENSOR - User detail'})%>
+
+<!--
+ ***********   BODY   ************************************************
+-->
+
+<body>
+
+  <!--***********  TOOLBAR HEADER   ************************************************-->
+  <header>
+    <div class="header">
+      <img src="/assets/images/logo.png" alt="Essensor logo" />
+    </div>
+  </header>
+
+  <!--***********   MAIN   ***********************************************-->
+  <main>
+    <div class="main-container">
+      <div class="image-container">
+        <img src="<%= userToShow.avatar %>" alt="imagen de usuario">
+      </div>
+      <div class="product-description-container">
+        <div class="product-items-container">
+          <h2><%=userToShow.userName%></h4>
+          <h3><%=userToShow.email%></h3>
+          <div class="buttons-container">
+              <a href="/userUpdate/<%=userToShow.id%>">
+                <button class="button">Actualizar</button>
+              </a>
+              <form method="post" action="/userDelete/<%=userToShow.id%>?_method=DELETE">
+                <input type="submit" name="_method" class="button" value="Eliminar">
+              </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+
+  <!--
+ ***********   FOOTER   ***********************************************
+-->
+  <%- include('partials/footer.ejs')%>
+</body>
+
+</html>
