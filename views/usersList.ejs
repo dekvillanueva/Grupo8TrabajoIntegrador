@@ -4,7 +4,7 @@
 
 <!--***********  HEAD   ************************************************-->
 
-<%- include('partials/head.ejs', {title: 'ESSENSOR - User detail' })%>
+<%- include('partials/head.ejs', {title: 'ESSENSOR - User list' })%>
 
   <!--
  ***********   BODY   ************************************************
@@ -19,37 +19,18 @@
       </div>
     </header>
 
-    <!--***********   MAIN   ***********************************************-->
+    <!--***********   MAIN   *********************************************************-->
+
     <main>
-
       <body>
-
-        <div class="articles-container">
-          <% for(let i=0; i<users.length; i++){%>
-            <!-- <%- include('partials/articleCard.ejs', {product: users[i]})%> -->
-            <article class="section-article display-1">
-              <div class="section-img section-img-sales ">
-                <img src=<%=users[i].avatar %> alt="Sensor image" />
-              </div>
-              <div class="section-article-foot-name-sales">
-                <h4>
-                  <%= users[i].userName %>
-                </h4>
-              </div>
-              <div class="section-article-foot section-article-foot-price">
-                <h5>
-                  <%= users[i].email %>
-                </h5>
-              </div>
-            </article>
+        <% for(let i=0; i<users.length; i++){%>
+          <%- include('partials/userCard.ejs', {user: users[i]})%>
             <% } %>
-        </div>
       </body>
     </main>
 
-    <!--
-***********   FOOTER   ***********************************************
--->
+ <!--***********   FOOTER  ***********************************************************-->
+
     <%- include('partials/footer.ejs')%>
   </body>
 

@@ -1,25 +1,30 @@
 [
   {
     "id": 1,
-    "userName": "Ichimoku",
-    "email": "ichimoku@essensor.com",
-    "password": "loquesea",
-    "avatar": "/",
-    "admin": true
+    "userName": "Joker",
+    "email": "joker@essensor.com",
+    "password": "ss",
+    "avatar": "/assets/images/avatars/image-1659005523575.jpg"
   },
   {
     "id": 2,
-    "userName": "Kobe",
-    "email": "kobe@essensor.com",
-    "password": "loquesea",
-    "avatar": "/",
-    "admin": true
+    "userName": "Optimus Prime",
+    "email": "optimus@essensor.com",
+    "password": "ss",
+    "avatar": "/assets/images/avatars/image-1659013434322.png"
   },
   {
     "id": 3,
-    "userName": "Joker10",
-    "email": "joker@essensor.com",
-    "password": "dd",
-    "avatar": ""
+    "userName": "Darth Vader",
+    "email": "darthvader@essensor.com",
+    "password": "ss",
+    "avatar": "/assets/images/avatars/image-1659015734968.png"
+  },
+  {
+    "id": 4,
+    "userName": "Lion-O",
+    "email": "liono@essensor.com",
+    "password": "ll",
+    "avatar": "/assets/images/avatars/image-1659015823195.png"
   }
 ]

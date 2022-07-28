@@ -1,7 +1,8 @@
 const { validationResult } = require('express-validator')
-
+const multerMidd = require("../middlewares/multerMiddleware");
 const fs = require('fs');
 const path = require('path');
+const bcrypt = require ('bcryptjs');
 
 const usersFilePath = path.join(__dirname, '../database/users.json');
 const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
@@ -39,27 +40,34 @@ const userController = {
     let email = req.body.userEmail;
     let password = req.body.userPassword;
     let passwordRepit = req.body.userRepitPassword;
-  
 
-    let userToSave = {
-      id: id,
-      userName: userName,
-      email: email,
-      password: passwordRepit,
-      avatar: imageName,
-     }
+    if (password != passwordRepit) {
+      alert("Las contraseñas ingresadas no son iguales")
+    } else {
+      let userToSave = {
+        id: id,
+        userName: userName,
+        email: email,
+        // password: bcryptjs.hashSync(passwordRepit, 10),
+        password: passwordRepit,
+        avatar: imageName
+      }
+
+      console.log(imageName);
+      console.log(userToSave.avatar);
 
 
-    let usersToSave = users;
-    usersToSave.push(userToSave);
+      let usersToSave = users;
+      usersToSave.push(userToSave);
 
-    try {
-      fs.writeFileSync(usersFilePath, JSON.stringify(usersToSave, null, 2));
-      console.log("User was saved.");
-    } catch (error) {
-      console.error(error);
+      try {
+        fs.writeFileSync(usersFilePath, JSON.stringify(usersToSave, null, 2));
+        console.log("User was saved.");
+      } catch (error) {
+        console.error(error);
+      }
+      res.redirect('/userDetail/' + id);
     }
-    // res.redirect('/userDetail/:' + id);
   },
 
   updateUser: (req, res) => {
@@ -78,28 +86,27 @@ const userController = {
       imageName = uploadUserImagePath + "image" + '-' + Date.now() + path.extname(file.originalname);
       modificarImagen = true
       console.log(imageName);
-    }else{
+    } else {
 
     }
-    
+
     let userName = req.body.userName;
     let email = req.body.userEmail;
     let password = req.body.userPassword;
     let passwordRepit = req.body.userRepitPassword;
-    
+
     const userToUpdate = users.filter((user) => (user.id == id))[0];
 
     userToUpdate.userName = userName;
     userToUpdate.email = email;
     userToUpdate.password = passwordRepit;
-    userToUpdate.avatar = imageName;
-
-    if(modificarImagen){
+    if (modificarImagen) {
       userToUpdate.avatar = imageName;
     }
+
     let usersToSave = users;
     const target = usersToSave.find(user => user.id == id);
-    
+
     const userToReplace = Object.assign(target, userToUpdate);
     usersToSave.splice(findIndex(users, id), 1, userToReplace);
 
@@ -109,7 +116,7 @@ const userController = {
     } catch (error) {
       console.error(error);
     }
-    res.redirect('/usersList');
+    res.redirect('/userDetail/' + id);
   },
 
   userDetail: (req, res) => {
@@ -129,19 +136,19 @@ const userController = {
     } catch (error) {
       console.error(error);
     }
-    res.redirect('/usersList');
+    res.redirect('/userDetail/' + id);
   },
 
   usersList: (req, res) => {
     const usersList = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
-    res.render("usersList.ejs", {users: usersList});
+    res.render("usersList.ejs", { users: usersList });
   }
 
 };
 
 
 function findIndex(list, id) {
-  for(let i=0; i<list.length; i++) {
+  for (let i = 0; i < list.length; i++) {
     if (list[i].id == id) {
       return i;
     }
