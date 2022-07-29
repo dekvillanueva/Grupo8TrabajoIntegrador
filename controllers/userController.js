@@ -2,12 +2,11 @@ const { validationResult } = require('express-validator')
 const multerMidd = require("../middlewares/multerMiddleware");
 const fs = require('fs');
 const path = require('path');
-const bcrypt = require ('bcryptjs');
+const bcryptjs = require('bcryptjs');
 
 const usersFilePath = path.join(__dirname, '../database/users.json');
-const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
 const uploadUserImagePath = "/assets/images/avatars/";
-
+const users = findAll();
 
 const userController = {
 
@@ -17,7 +16,7 @@ const userController = {
 
   processRegister: (req, res, next) => {
     const file = req.file
-    if (!file) {
+      if (!file) {
       const error = new Error('Please upload a Image File')
       error.httpStatusCode = 400
       return next(error)
@@ -33,7 +32,6 @@ const userController = {
       }
     }
 
-
     let imageName = uploadUserImagePath + "image" + '-' + Date.now() + path.extname(file.originalname);
     let id = users[users.length - 1].id + 1;
     let userName = req.body.userName;
@@ -41,33 +39,43 @@ const userController = {
     let password = req.body.userPassword;
     let passwordRepit = req.body.userRepitPassword;
 
-    if (password != passwordRepit) {
-      alert("Las contraseñas ingresadas no son iguales")
-    } else {
-      let userToSave = {
-        id: id,
-        userName: userName,
-        email: email,
-        // password: bcryptjs.hashSync(passwordRepit, 10),
-        password: passwordRepit,
-        avatar: imageName
-      }
+        // let userInDB = users.findByField(email, req.body.email);
+        // if (userInDB) {
+        //   return res.render("userRegister", {
+        //     errors: {
+        //       email: {
+        //         msg: 'Este email ya se encuentra registrado'
+        //       }
+        //     },
+        //     oldData: req.body
+        //   })
+        // }
 
-      console.log(imageName);
-      console.log(userToSave.avatar);
-
-
-      let usersToSave = users;
-      usersToSave.push(userToSave);
-
-      try {
-        fs.writeFileSync(usersFilePath, JSON.stringify(usersToSave, null, 2));
-        console.log("User was saved.");
-      } catch (error) {
-        console.error(error);
-      }
-      res.redirect('/userDetail/' + id);
+    // if (password != passwordRepit) {
+    //   // throw new Error("Las contraseñas ingresadas no son iguales");
+    // } else {
+    let userToSave = {
+      id: id,
+      userName: userName,
+      email: email,
+      password: bcryptjs.hashSync(passwordRepit, 10),
+      avatar: imageName
     }
+
+    console.log(imageName);
+    console.log(userToSave.avatar);
+
+    let usersToSave = users;
+    usersToSave.push(userToSave);
+
+    try {
+      fs.writeFileSync(usersFilePath, JSON.stringify(usersToSave, null, 2));
+      console.log("User was saved.");
+    } catch (error) {
+      console.error(error);
+    }
+    res.redirect('/userDetail/' + id);
+    // }
   },
 
   updateUser: (req, res) => {
@@ -147,6 +155,13 @@ const userController = {
 };
 
 
+
+//******************************** FUNCIONES AUXILIARES ******************************* */
+
+function findAll() {
+return JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
+}
+
 function findIndex(list, id) {
   for (let i = 0; i < list.length; i++) {
     if (list[i].id == id) {
@@ -155,6 +170,13 @@ function findIndex(list, id) {
   }
 }
 
+function findByField(field, text) {
+  let allUsers = this.findAll();
+  let userFound = allUsers.find(oneUser => oneUser[field] === text);
+  return userFound;
+}
+
+// console.log(findByField(userEmail, 'liono@essensor.com'));
 
 module.exports = userController;
 
