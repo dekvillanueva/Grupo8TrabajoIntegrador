@@ -23,7 +23,7 @@
   </div>
 
   <main>
-    <form action="">
+    <form action="/login" method="POST">
       <div class="main-container">
         <div class="main-container-title">
           <h2 class="title">Bienvenido</h2>
@@ -48,7 +48,7 @@
             <label for="email">Email</label>
             <div class="text-input-with-icon">
               <i class="material-icons">email</i>
-              <input class="text-inputs" type="text" name="user-email" placeholder="example@gmail.com" id="email"
+              <input class="text-inputs" type="text" name="userEmail" placeholder="example@gmail.com" id="email"
                 required />
             </div>
           </div>
@@ -63,7 +63,7 @@
           </div>
         </div>
         <div class="main-container-text-inputs-button">
-          <button class="button-iniciar" type="button" onclick="alert('Prueba de button click Alert!')">
+          <button class="button-iniciar" type="submit">
             Iniciar
           </button>
         </div>

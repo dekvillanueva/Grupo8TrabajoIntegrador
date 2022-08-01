@@ -26,12 +26,5 @@
     "email": "liono@essensor.com",
     "password": "ll",
     "avatar": "/assets/images/avatars/image-1659015823195.png"
-  },
-  {
-    "id": 5,
-    "userName": "Darth Vader--",
-    "email": "joker@essensor.com",
-    "password": "$2a$10$fnjnNiJZLMcthytShdhF5eF64gU3TK4W3yEjWcGe/EY.v.ONhGRRa",
-    "avatar": "/assets/images/avatars/image-1659105066437.png"
   }
 ]
