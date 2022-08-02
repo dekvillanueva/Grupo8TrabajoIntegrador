@@ -1,36 +1,41 @@
-const { validationResult } = require('express-validator')
+const { validationResult } = require("express-validator");
 const multerMidd = require("../middlewares/multerMiddleware");
-const fs = require('fs');
-const path = require('path');
-const bcryptjs = require('bcryptjs');
+const fs = require("fs");
+const path = require("path");
+const bcryptjs = require("bcryptjs");
 
-const usersFilePath = path.join(__dirname, '../database/users.json');
+const usersFilePath = path.join(__dirname, "../database/users.json");
 const uploadUserImagePath = "/assets/images/avatars/";
 const allUsers = findAll();
 
-const userController = {
+let dataValidation = {
+  name: "",
+  email: "",
+  password:"",
+};
 
+const userController = {
   userRegister: (req, res) => {
-    res.render("userRegister.ejs");
+    dataValidation.password = "";
+    res.render("userRegister.ejs", { dataValidation: dataValidation });
   },
 
   processRegister: (req, res, next) => {
-
-    const file = req.file
+    const file = req.file;
     if (!file) {
-      const error = new Error('Please upload a Image File')
-      error.httpStatusCode = 400
-      return next(error)
+      const error = new Error("Please upload a Image File");
+      error.httpStatusCode = 400;
+      return next(error);
     }
 
     const resultValidation = validationResult(req);
 
     if (resultValidation.errors.length > 0) {
       res.render("userRegister.ejs"),
-      {
-        errors: resultValidation.mapped(),
-        oldData: req.body
-      }
+        {
+          errors: resultValidation.mapped(),
+          oldData: req.body,
+        };
     }
 
     let imageName = uploadUserImagePath + req.file.filename;
@@ -39,49 +44,46 @@ const userController = {
     let email = req.body.userEmail;
     let password = req.body.userPassword;
     let passwordRepit = req.body.userRepitPassword;
+    
+    if (password != passwordRepit) {
+      dataValidation.password = "Las contraseñas ingresadas no son iguales";
+    } else {}
 
-    // let userInDB = findByField(email, req.body.email);
-    // if (userInDB) {
-    //   return res.render("userRegister", {
-    //     errors: {
-    //       email: {
-    //         msg: 'Este email ya se encuentra registrado'
-    //       }
-    //     },
-    //     oldData: req.body
-    //   })
-    // }
+      let userInDB = userRepit(email, userName);
 
-    // if (password != passwordRepit) {
-    //   // throw new Error("Las contraseñas ingresadas no son iguales");
-    // } else {
-    let userToSave = {
-      id: id,
-      userName: userName,
-      email: email,
-      password: bcryptjs.hashSync(passwordRepit, 10),
-      avatar: imageName
-    }
+      if (userInDB.email || userInDB.userName || userInDB.password) {
+          return res.render("userRegister", {
+          dataValidation: userInDB,
+          oldData: req.body,
+        });
+      }else{}
 
-    console.log(imageName);
-    console.log(userToSave.avatar);
+      let userToSave = {
+        id: id,
+        userName: userName,
+        email: email,
+        password: bcryptjs.hashSync(passwordRepit, 10),
+        avatar: imageName,
+      };
 
-    let usersToSave = allUsers;
-    usersToSave.push(userToSave);
+      let usersToSave = allUsers;
+      usersToSave.push(userToSave);
 
-    try {
-      fs.writeFileSync(usersFilePath, JSON.stringify(usersToSave, null, 2));
-      console.log("User was saved.");
-    } catch (error) {
-      console.error(error);
-    }
-    res.redirect('/login');
-    // }
+      console.log(userToSave);
+
+      try {
+        fs.writeFileSync(usersFilePath, JSON.stringify(usersToSave, null, 2));
+        console.log("User was saved.");
+      } catch (error) {
+        console.error(error);
+      }
+      res.redirect("/login");
+    
   },
 
   updateUser: (req, res) => {
     let id = req.params.id;
-    const userToEdit = allUsers.filter((user) => (user.id == id));
+    const userToEdit = allUsers.filter((user) => user.id == id);
 
     res.render("userUpdate.ejs", { user: userToEdit[0] });
   },
@@ -89,14 +91,12 @@ const userController = {
   editUser: (req, res) => {
     let id = req.params.id;
     const file = req.file;
-    let imageName = '';
+    let imageName = "";
     let modificarImagen = false;
     if (file) {
       imageName = uploadUserImagePath + req.file.filename;
-      modificarImagen = true
-      console.log(imageName);
+      modificarImagen = true;
     } else {
-
     }
 
     let userName = req.body.userName;
@@ -104,7 +104,7 @@ const userController = {
     let password = req.body.userPassword;
     let passwordRepit = req.body.userRepitPassword;
 
-    const userToUpdate = allUsers.filter((user) => (user.id == id))[0];
+    const userToUpdate = allUsers.filter((user) => user.id == id)[0];
 
     userToUpdate.userName = userName;
     userToUpdate.email = email;
@@ -114,7 +114,7 @@ const userController = {
     }
 
     let usersToSave = allUsers;
-    const target = usersToSave.find(user => user.id == id);
+    const target = usersToSave.find((user) => user.id == id);
 
     const userToReplace = Object.assign(target, userToUpdate);
     usersToSave.splice(findIndex(allUsers, id), 1, userToReplace);
@@ -125,51 +125,48 @@ const userController = {
     } catch (error) {
       console.error(error);
     }
-    res.redirect('/userDetail/' + id);
+    res.redirect("/userDetail/" + id);
   },
 
   userDetail: (req, res) => {
     let id = req.params.id;
-    const searchedUser = allUsers.filter(user => user.id == id);
+    const searchedUser = allUsers.filter((user) => user.id == id);
     res.render("userDetail.ejs", {
-      userToShow: searchedUser[0]
+      userToShow: searchedUser[0],
     });
   },
 
   delete: (req, res) => {
     let id = req.params.id;
-    const usersToSave = allUsers.filter(user => user.id != id);
+    const usersToSave = allUsers.filter((user) => user.id != id);
     try {
       fs.writeFileSync(usersFilePath, JSON.stringify(usersToSave, null, 2));
       console.log("User was deleted.");
     } catch (error) {
       console.error(error);
     }
-    res.redirect('/usersList');
+    res.redirect("/usersList");
   },
 
   usersList: (req, res) => {
-    const usersList = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
+    const usersList = JSON.parse(fs.readFileSync(usersFilePath, "utf-8"));
     res.render("usersList.ejs", { users: usersList });
   },
 
   login: (req, res) => {
-    res.render("login.ejs")
+    res.render("login.ejs");
   },
 
   loginProcess: (req, res) => {
-    let userToLogin = findByField('userEmail', req.body.email);
+    let userToLogin = findByField("userEmail", req.body.email);
     console.log(userToLogin);
-  }
-
+  },
 };
-
-
 
 //******************************** FUNCIONES AUXILIARES ******************************* */
 
 function findAll() {
-  return JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
+  return JSON.parse(fs.readFileSync(usersFilePath, "utf-8"));
 }
 
 function findIndex(list, id) {
@@ -184,32 +181,37 @@ function generateID() {
   let id = 0;
   if (allUsers.length != 0) {
     id = allUsers[allUsers.length - 1].id + 1;
-  } else { id = 1; }
+  } else {
+    id = 1;
+  }
   return id;
 }
 
-//findByPk agregado 30/07 - porque no anda con this?
 function findByPk(id) {
-  let userFound = allUsers.find(oneUser => oneUser.id === id);
+  let userFound = allUsers.find((oneUser) => oneUser.id === id);
   return userFound;
 }
 
-//findByField agregado 30/07 - porque entre [field]?
 function findByField(field, text) {
-  let userFound = allUsers.find(oneUser => oneUser[field] === text);
+  let userFound = allUsers.find((oneUser) => oneUser[field] === text);
   return userFound;
 }
 
+function userRepit(email, name) {
+  dataValidation.name = "";
+  dataValidation.email = "";
 
-// console.log(findAll());
-// console.log(findByPk(1));
-// console.log(findByField("email", "optimus@essensor.com"));
-// console.log(generateID());
-// console.log(userController.create({name: 'Mariano', email: 'mariano@essensor.com'}));
+  for (let i = 0; i < allUsers.length; i++) {
+    if (allUsers[i].userName == name) {
+      dataValidation.name = "Este nombre de usuario ya se encuentra registrado";
+    }
+    if (allUsers[i].email == email) {
+      dataValidation.email = "Este email ya se encuentra registrado";
+    }
+  }
 
+  return dataValidation;
+}
 
-// console.log(findByField(userEmail, 'liono@essensor.com'));
 
 module.exports = userController;
-
-

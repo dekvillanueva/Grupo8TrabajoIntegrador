@@ -26,5 +26,12 @@
     "email": "liono@essensor.com",
     "password": "ll",
     "avatar": "/assets/images/avatars/image-1659015823195.png"
+  },
+  {
+    "id": 5,
+    "userName": "Kobe",
+    "email": "kobe@essensor.com",
+    "password": "$2a$10$yvO4nJBHRleidaEQiTvy5OZF.KxJnLS33OncOq3IFm65eVyWNAPvu",
+    "avatar": "/assets/images/avatars/image-1659456334246.jpg"
   }
 ]
