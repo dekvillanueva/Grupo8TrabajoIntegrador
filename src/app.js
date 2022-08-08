@@ -12,7 +12,7 @@ const methodOverride = require('method-override');
 const  port = 3000;
 
 //middlewares
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '../public')));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(methodOverride('_method'));
