@@ -3,6 +3,7 @@ const userRouter = express.Router();
 
 //Requerimos el controlador
 const userController = require("../controllers/userController");
+const userControllerSq = require("../controllers/userControllerSq");
 
 //Middlewares
 const uploadFile = require('../middlewares/multerMiddleware');
@@ -11,7 +12,8 @@ const uploadFile = require('../middlewares/multerMiddleware');
 
 //Login
 userRouter.get('/login', userController.login);
-userRouter.post('/login', userController.loginProcess);
+//userRouter.post('/login', userController.loginProcess);
+userRouter.post('/login', userControllerSq.loginProcess);
 //Formulario de registro de usuario - Creación
 userRouter.get('/userRegister', userController.userRegister);
 userRouter.post('/userRegister', uploadFile.single('avatar'), userController.processRegister);

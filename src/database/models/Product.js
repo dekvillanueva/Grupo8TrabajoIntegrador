@@ -6,31 +6,31 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
             autoIncrement: true,
             primaryKey: true,
-            type: Sequelize.INTEGER
+            type: DataTypes.INTEGER
         },
         name: {
             allowNull: false,
-            type: Sequelize.STRING
+            type: DataTypes.STRING
         },
         description: {
             allowNull: true,
-            type: Sequelize.TEXT
+            type: DataTypes.TEXT
         },
         image: {
             allowNull: true,
-            type: Sequelize.TEXT
+            type: DataTypes.TEXT
         },
         price:{
             allowNull: false,
-            type: Sequelize.DECIMAL
+            type: DataTypes.DECIMAL
         },
         discount:{
             allowNull: true,
-            type: Sequelize.INTEGER
+            type: DataTypes.INTEGER
         },
         category_id:{
             allowNull: false,
-            type: Sequelize.INTEGER
+            type: DataTypes.INTEGER
         }
     }, {
         tableName: "products",

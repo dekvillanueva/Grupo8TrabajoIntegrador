@@ -5,31 +5,31 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
             autoIncrement: true,
             primaryKey: true,
-            type: Sequelize.INTEGER
+            type: DataTypes.INTEGER
         },
         user_name: {
             allowNull: false,
-            type: Sequelize.STRING
+            type: DataTypes.STRING
         },
         email: {
             allowNull: false,
-            type: Sequelize.STRING
+            type: DataTypes.STRING
         },
         password: {
             allowNull: false,
-            type: Sequelize.STRING
+            type: DataTypes.STRING
         },
         avatar:{
             allowNull: true,
-            type: Sequelize.STRING
+            type: DataTypes.STRING
         },
         is_admin:{
             allowNull: false,
-            type: Sequelize.INTEGER
+            type: DataTypes.INTEGER
         }
     }, {
         tableName: "users",
-        timestamps: true
+        timestamps: false
     });
 
     User.associate = function (models) {

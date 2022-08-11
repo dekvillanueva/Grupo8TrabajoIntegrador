@@ -28,7 +28,7 @@ app.set("view engine", "ejs");
 
 
 app.listen(port, () =>{
-    console.log(__dirname
+    console.log("Servidor corriendo en puerto 3000"
         );
 
 })
