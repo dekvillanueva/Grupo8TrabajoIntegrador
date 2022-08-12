@@ -4,7 +4,8 @@
   "description": "Trabajo integrador final curso FullStack - G8 'Proyecto Essensor' ",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "nodemon": "app.js"
   },
   "repository": {
     "type": "git",
@@ -25,6 +26,7 @@
     "method-override": "^3.0.0",
     "multer": "^1.4.5-lts.1",
     "mysql2": "^2.3.3",
+    "nodemon": "^2.0.19",
     "sequelize": "^6.21.3"
   }
 }
