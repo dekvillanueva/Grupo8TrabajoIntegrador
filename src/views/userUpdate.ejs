@@ -21,7 +21,7 @@
     <%- include('partials/header.ejs')%>
   </div>
   <main>
-    <form action="/userUpdate/<%= user.id %>?_method=PUT" method="post">
+    <form action="/userUpdate/<%= user.user_id %>?_method=PUT" method="post" enctype="multipart/form-data">
       <div class="main-container">
         <div class="main-container-title">
           <h2 class="title">Actualizar datos de usuario</h2>
@@ -46,29 +46,12 @@
             </div>
           </div>
         </div>
-        <div class="main-container-text-inputs-clave">
-          <div class="rounder-container">
-            <label for="password">Clave</label>
-            <div class="text-input-with-icon">
-              <i class="material-icons">lock</i>
-              <input class="text-inputs" type="password" name="userPassword" id="password" required />
-            </div>
-          </div>
-        </div>
-        <div class="main-container-text-inputs-clave">
-          <div class="rounder-container">
-            <label for="repit-password">Repetir clave</label>
-            <div class="text-input-with-icon">
-              <i class="material-icons">lock</i>
-              <input class="text-inputs" type="password" name="userRepitPassword" id="repit-password" required />
-            </div>
-          </div>
-        </div>
-        <div class="main-container-text-inputs-image">
+        <div class="main-container-text-inputs-email">
           <div class="rounder-container">
             <label for="imagen">Imagen</label>
-            <div>
-              <input class="text-inputs" type="file" name="avatar" id="imagen" src="<%=user.avatar%>"
+            <div class="input-container">
+              <img class="avatar-image" src="<%=user.avatar%>" alt="Avatar de usuario">
+              <input class="text-inputs" type="file" name="avatar" id="imagen" 
                 value="Por favor selecciones una imagen en formato .jpeg, .jpg, .png, .gif" />
             </div>
           </div>

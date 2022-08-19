@@ -7,13 +7,6 @@
     "avatar": "/assets/images/avatars/image-1659005523575.jpg"
   },
   {
-    "id": 2,
-    "userName": "Optimus Prime",
-    "email": "optimus@essensor.com",
-    "password": "ss",
-    "avatar": "/assets/images/avatars/image-1659013434322.png"
-  },
-  {
     "id": 3,
     "userName": "Darth Vader",
     "email": "darthvader@essensor.com",

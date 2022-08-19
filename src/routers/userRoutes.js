@@ -20,14 +20,17 @@ userRouter.get('/userRegister', userControllerSq.userRegister)
 //userRouter.post('/userRegister', uploadFile.single('avatar'), userController.processRegister);
 userRouter.post('/userRegister', uploadFile.single('avatar'), userControllerSq.processRegister);
 //Detalle de usuario
-userRouter.get('/userDetail/:id', userController.userDetail);
+// userRouter.get('/userDetail/:id', userController.userDetail);
+userRouter.get('/userDetail/:id', userControllerSq.userDetail);
 //Modificar un Usuario
 //userRouter.get('/userUpdate/:id', userController.updateUser);
 userRouter.get('/userUpdate/:id', userControllerSq.updateUser);
 userRouter.put('/userUpdate/:id', uploadFile.single('avatar'), userControllerSq.editUser);
 //Eliminar usuario
-userRouter.delete('/userDelete/:id', userController.delete);
+// userRouter.delete('/userDelete/:id', userController.delete);
+userRouter.delete('/userDelete/:id', userControllerSq.delete);
 //Listar usuarios
-userRouter.get('/usersList', userController.usersList);
+// userRouter.get('/usersList', userController.usersList);
+userRouter.get('/usersList', userControllerSq.usersList);
 
 module.exports = userRouter;

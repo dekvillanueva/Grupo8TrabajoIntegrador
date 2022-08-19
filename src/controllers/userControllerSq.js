@@ -90,13 +90,13 @@ const userController = {
   updateUser: async (req, res) => {
     let id = req.params.id;
     let userToEdit = [];
-    const userInDB = await DB.User.findByPk(id).then((user)=> {
+    const userInDB = await DB.User.findByPk(id).then((user) => {
       userToEdit.push(user.dataValues);
     });
-    res.render("userUpdate.ejs", { user: userToEdit[0]});
+    res.render("userUpdate.ejs", { user: userToEdit[0] });
   },
 
-  editUser:  async (req, res) => {
+  editUser: async (req, res) => {
     let id = req.params.id;
     const file = req.file;
     let imageName = "";
@@ -105,21 +105,16 @@ const userController = {
       imageName = uploadUserImagePath + req.file.filename;
       modificarImagen = true;
     } else {
+      console.log("No hay image");
     }
 
-    let userName = req.body.userName;
+    let user_name = req.body.userName;
     let email = req.body.userEmail;
-    let password = req.body.userPassword;
-    let passwordRepit = req.body.userRepitPassword;
+    let avatar = "";
+   
+    let userInDB = userRepit(email, user_name, id);
 
-    if (password != passwordRepit) {
-      dataValidation.password = "Las contraseñas ingresadas no son iguales";
-    } else {
-    }
-
-    let userInDB = userRepit(email, userName, id);
-
-    if (userInDB.email || userInDB.name || dataValidation.password) {
+    if (userInDB.email || userInDB.name) {
       return res.render("userRegister", {
         dataValidation: userInDB,
         oldData: req.body,
@@ -127,49 +122,48 @@ const userController = {
     } else {
     }
 
-    userToUpdate.user_name = userName;
-    userToUpdate.email = email;
-    userToUpdate.password = passwordRepit;
-    if (modificarImagen) {
-      userToUpdate.avatar = imageName;
+    if (!modificarImagen) {
+      const userInDB = await DB.User.findByPk(id).then((user) => {
+        avatar = user.avatar;
+      });
+    }else{
+      avatar = imageName;
     }
 
     const actualizada = await DB.User.update(
       {
-        userToUpdate
+        user_name,
+        email,
+        avatar
       },
       {
-        where: { 
-          user_id: id
-        }
+        where: {
+          user_id: id,
+        },
       }
     );
 
     res.redirect("/userDetail/" + id);
   },
 
-  userDetail: (req, res) => {
+  userDetail: async (req, res) => {
     let id = req.params.id;
-    const searchedUser = allUsers.filter((user) => user.id == id);
-    res.render("userDetail.ejs", {
-      userToShow: searchedUser[0],
+    let userToShow= [];
+    const userInDB = await DB.User.findByPk(id).then((user) => {
+      userToShow.push(user.dataValues);
     });
+    res.render("userDetail.ejs", { userToShow: userToShow[0] });
   },
 
-  delete: (req, res) => {
-    let id = req.params.id;
-    const usersToSave = allUsers.filter((user) => user.id != id);
-    try {
-      fs.writeFileSync(usersFilePath, JSON.stringify(usersToSave, null, 2));
-      console.log("User was deleted.");
-    } catch (error) {
-      console.error(error);
-    }
+  delete: async (req, res) => {
+    let user = await DB.User.findByPk(req.params.id);
+    await user.destroy();
+
     res.redirect("/usersList");
   },
 
-  usersList: (req, res) => {
-    const usersList = JSON.parse(fs.readFileSync(usersFilePath, "utf-8"));
+  usersList: async (req, res) => {
+    let usersList = await DB.User.findAll();
     res.render("usersList.ejs", { users: usersList });
   },
 
@@ -230,8 +224,8 @@ function userRepit(email, name, id) {
       if (usersDB[i].email == email) {
         dataValidation.email = "Este email ya se encuentra registrado";
       }
-    }else{
-      if(usersDB.id != id){
+    } else {
+      if (usersDB.id != id) {
         if (usersDB[i].user_name == name) {
           dataValidation.name =
             "Este nombre de usuario ya se encuentra registrado";
@@ -239,8 +233,7 @@ function userRepit(email, name, id) {
         if (usersDB[i].email == email) {
           dataValidation.email = "Este email ya se encuentra registrado";
         }
-      }else{
-
+      } else {
       }
     }
   }
