@@ -43,10 +43,10 @@ const userController = {
 
     if (resultValidation.errors.length > 0) {
       res.render("userRegister.ejs"),
-        {
-          errors: resultValidation.mapped(),
-          oldData: req.body,
-        };
+      {
+        errors: resultValidation.mapped(),
+        oldData: req.body,
+      };
     }
 
     let imageName = uploadUserImagePath + req.file.filename;
@@ -111,7 +111,7 @@ const userController = {
     let user_name = req.body.userName;
     let email = req.body.userEmail;
     let avatar = "";
-   
+
     let userInDB = userRepit(email, user_name, id);
 
     if (userInDB.email || userInDB.name) {
@@ -126,7 +126,7 @@ const userController = {
       const userInDB = await DB.User.findByPk(id).then((user) => {
         avatar = user.avatar;
       });
-    }else{
+    } else {
       avatar = imageName;
     }
 
@@ -148,10 +148,11 @@ const userController = {
 
   userDetail: async (req, res) => {
     let id = req.params.id;
-    let userToShow= [];
-    const userInDB = await DB.User.findByPk(id).then((user) => {
-      userToShow.push(user.dataValues);
-    });
+    let userToShow = [];
+    const userInDB = await DB.User.findByPk(id)
+      .then((user) => {
+        userToShow.push(user.dataValues);
+      });
     res.render("userDetail.ejs", { userToShow: userToShow[0] });
   },
 

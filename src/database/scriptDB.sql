@@ -7,12 +7,12 @@ USE g8db;
 CREATE TABLE products
 (
     product_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, 
-    name VARCHAR(50),
-    decription TEXT,
-    image VARCHAR(100),
-    price DECIMAL,
-    discount INT,
-    category_id INT NOT NULL
+    product_name VARCHAR(50),
+    product_description TEXT,
+    product_image VARCHAR(100),
+    product_price DECIMAL,
+    product_discount INT,
+    product_category_id INT NOT NULL
 );
 
 /*creación de tabla users*/

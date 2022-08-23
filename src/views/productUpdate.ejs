@@ -30,7 +30,7 @@
  ***********   MAIN   ***********************************************
 -->
     <main>
-        <form action="/productUpdate/<%= product.id %>?_method=PUT" method="post">
+        <form action="/productUpdate/<%= product.product_id %>?_method=PUT" method="post" enctype="multipart/form-data">
             <div class="main-container">
                 <div class="main-container-title">
                     <h2 class="title">Modificar producto</h2>
@@ -41,7 +41,7 @@
                         <label for="productName">Nombre del producto</label>
                         <div class="text-input-with-icon">
                             <input class="text-inputs" type="text" name="productName" placeholder="Nombre del producto"
-                                value="<%=product.name%>"
+                                value="<%=product.product_name%>"
                                 id="productName" required />
                         </div>
                     </div>
@@ -50,17 +50,19 @@
                     <div class="rounder-container">
                         <label for="productDescription">Descripción del producto</label>
                         <div>
-                            <textarea name="productDescription" id="productDescription" cols="30" rows="5"><%=product.description%></textarea>
+                            <textarea name="productDescription" id="productDescription" cols="30" rows="5"><%=product.product_description%></textarea>
                         </div>
                     </div>
                 </div>
                 <div class="main-container-text-inputs">
                     <div class="rounder-container">
                         <label for="imagen">Imagen</label>
-                        <div>
-                            <input class="text-inputs" type="image" name="image" accept=".jpg,.png" id="imagen" 
-                            src="<%=product.image%>" value="Cargar imagen" />
-                        </div>
+                        <div class="input-container">
+                            <img class="avatar-image" src="<%=product.product_image%>" alt="Imagen de producto">
+                            <input class="text-inputs" type="file" name="image" id="imagen" 
+                              value="Por favor selecciones una imagen en formato .jpeg, .jpg, .png, .gif" />
+                          </div>
+              
                     </div>
                 </div>
                 <div class="main-container-text-inputs">
@@ -69,10 +71,10 @@
                         <div>
                             <select name="category">
                                 <%for(category of categories){%>
-                                <option value="<%=category%>"
-                                    <% if(category==product.category){%>
+                                <option value="<%=product.product_category_id%>"
+                                    <% if(category.id==product.product_category_id){%>
                                         selected = "selected"
-                                        <%}%> ><%=category%></option>
+                                        <%}%> ><%=category.name%></option>
                                 <%}%>
                             </select>
                         </div>
@@ -83,7 +85,7 @@
                     <div class="rounder-container">
                         <label for="precio">Precio</label>
                         <div>
-                            <input class="text-inputs" value="<%=product.price%>" type="text" name="price" id="precio" placeholder="$precio"
+                            <input class="text-inputs" value="<%=product.product_price%>" type="text" name="price" id="precio" placeholder="$precio"
                                 />
                         </div>
                     </div>
@@ -96,7 +98,7 @@
                             <select name="discount">
                                 <%for(discount of discounts){%>
                                 <option value="<%=discount%>"
-                                    <% if(discount==product.discount){%>
+                                    <% if(discount==product.product_discount){%>
                                         selected = "selected"
                                         <%}%> ><%=discount%></option>
                                 <%}%>

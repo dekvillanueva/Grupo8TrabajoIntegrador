@@ -23,19 +23,19 @@
   <main>
     <div class="main-container">
       <div class="image-container">
-        <img src="<%= product.image %>" alt="imagen de producto">
+        <img src="<%= productToShow.product_image %>" alt="imagen de producto">
       </div>
       <div class="product-description-container">
         <div class="product-items-container">
-          <h2><%=product.name%></h4>
-          <h3>$ <%=product.price%></h3>
-          <h4><%=product.discount%> %</h5>
-          <p><%=product.description%></p>
+          <h2><%=productToShow.product_name%></h4>
+          <h3>$ <%=productToShow.product_price%></h3>
+          <h4><%=productToShow.product_discount%> %</h5>
+          <p><%=productToShow.product_description%></p>
           <div class="buttons-container">
-              <a href="/productUpdate/<%=product.id%>">
+              <a href="/productUpdate/<%=productToShow.product_id%>">
                 <button class="button">Actualizar</button>
               </a>
-              <form method="post" action="/productDelete/<%=product.id%>?_method=DELETE">
+              <form method="post" action="/productDelete/<%=productToShow.product_id%>?_method=DELETE">
                 <input type="submit" name="_method" class="button" value="Eliminar">
               </form>
           </div>

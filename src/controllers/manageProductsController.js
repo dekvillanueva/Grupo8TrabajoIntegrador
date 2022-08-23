@@ -160,7 +160,7 @@ const manageProductsController = {
    * @param {*} req 
    * @param {*} res 
    */
-  detail: (req, res) => {
+  detail:(req, res) => {
     let id = req.params.id;
     const producto = products.filter(p => p.id == id);
     res.render("productDetail.ejs", {

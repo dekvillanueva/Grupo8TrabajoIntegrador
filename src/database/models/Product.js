@@ -8,40 +8,40 @@ module.exports = (sequelize, DataTypes) => {
             primaryKey: true,
             type: DataTypes.INTEGER
         },
-        name: {
+        product_name: {
             allowNull: false,
             type: DataTypes.STRING
         },
-        description: {
+        product_description: {
             allowNull: true,
             type: DataTypes.TEXT
         },
-        image: {
+        product_image: {
             allowNull: true,
             type: DataTypes.TEXT
         },
-        price:{
+        product_price:{
             allowNull: false,
             type: DataTypes.DECIMAL
         },
-        discount:{
+        product_discount:{
             allowNull: true,
             type: DataTypes.INTEGER
         },
-        category_id:{
+        product_category_id:{
             allowNull: false,
             type: DataTypes.INTEGER
         }
     }, {
         tableName: "products",
-        timestamps: true
+        timestamps: false
     });
 
     Product.associate = function (models) {
 
         Product.belongsTo(models.Category, { 
             as: "categories",
-            foreignKey: "category_id"
+            foreignKey: "product_category_id"
         })
        
         Product.belongsToMany(models.User, {
