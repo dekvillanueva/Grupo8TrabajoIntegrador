@@ -45,18 +45,16 @@
             <label for="email">Nombre de usuario</label>
             <div class="text-input-with-icon">
               <i class="material-icons">person</i>
-              <% if(dataValidation.name !="" ){%>
-                <input class="text-inputs" type="text" name="userName" value="<%=oldData.userName%>" id="userName"
-                  required />
-
-                <% }else{%>
-                  <input class="text-inputs" type="text" name="userName" id="userName" required />
-                  <%}%>
+              <% if(!isFromGet && oldData){ %>
+                <input class="text-inputs" type="text" name="userName" value="<%= oldData.userName %>" id="userName" required />
+              <% } else{ %> 
+                <input class="text-inputs" type="text" name="userName" value="" id="userName" required />
+              <% } %>
             </div>
           </div>
-          <%if(dataValidation.name !="" ){%>
+          <%if(!isFromGet && errors && errors.userName){%>
             <label style="color: Red;">
-              <%= dataValidation.name %>
+              <%= errors.userName.msg %>
             </label>
             <%}%>
 
@@ -68,18 +66,17 @@
           <label for="email">Email</label>
           <div class="text-input-with-icon">
             <i class="material-icons">email</i>
-            <% if(dataValidation.email !="" ){%>
-              <input class="text-inputs" type="text" name="userEmail" value="<%=oldData.userEmail%>" id="email"
-                required />
-              <% }else{%>
-                <input class="text-inputs" type="text" name="userEmail" placeholder="example@gmail.com" id="email"
-                  required />
-                <%}%>
+            <% if(!isFromGet && oldData){ %>
+              <input class="text-inputs" type="text" name="userEmail" value="<%= oldData.userEmail %>" id="email" required />
+            <% } else{ %>  
+              <input class="text-inputs" type="text" name="userEmail" value="" id="email" required />
+            <% } %>
+                
           </div>
         </div>
-        <%if(dataValidation.email !="" ){%>
+        <%if(!isFromGet && errors && errors.userEmail){%>
           <label style="color: Red;">
-            <%= dataValidation.email %>
+            <%= errors.userEmail.msg%>
           </label>
           <%}%>
       </div>
@@ -88,17 +85,17 @@
           <label for="password">Clave</label>
           <div class="text-input-with-icon">
             <i class="material-icons">lock</i>
-            <% if(dataValidation.password !="" ){%>
-              <input class="text-inputs" type="password" name="userPassword" id="userPassword" required />
-              <% }else{%>
-                <input class="text-inputs" type="password" name="userPassword" id="userPassword" required />
-                <%}%>
+            <% if(!isFromGet && oldData){ %>
+              <input class="text-inputs" type="password" name="userPassword"  value="<%= oldData.userPassword %>" id="userPassword" required />
+              <% } else{ %>  
+                <input class="text-inputs" type="password" name="userPassword" value="" id="userPassword" required />
+              <% } %>
           </div>
         </div>
         <div>
-          <%if(dataValidation.password !="" ){%>
+          <%if(!isFromGet && errors && errors.userPassword){%>
             <label style="color: Red;">
-              <%= dataValidation.password %>
+              <%= errors.userPassword.msg%>
             </label>
             <%}%>
         </div>
@@ -109,8 +106,19 @@
           <label for="repit-password">Repetir clave</label>
           <div class="text-input-with-icon">
             <i class="material-icons">lock</i>
-            <input class="text-inputs" type="password" name="userRepitPassword" id="repit-password" required />
+            <% if(!isFromGet && oldData){ %>
+            <input class="text-inputs" type="password" name="userRepitPassword" value="<%= oldData.userRepitPassword %>" id="repit-password" required />
+            <% } else{ %>  
+              <input class="text-inputs" type="password" name="userRepitPassword" value="" id="repit-password" required />
+            <% } %>
           </div>
+        </div>
+        <div>
+          <%if(!isFromGet && errors && errors.userRepitPassword){%>
+            <label style="color: Red;">
+              <%= errors.userRepitPassword.msg%>
+            </label>
+            <%}%>
         </div>
       </div>
       <div class="main-container-text-inputs-image">
@@ -120,6 +128,13 @@
             <input class="text-inputs" type="file" name="avatar" id="imagen"
               value="Por favor selecciones una imagen en formato .jpeg, .jpg, .png, .gif" />
           </div>
+        </div>
+        <div>
+          <%if(!isFromGet && errors && errors.avatar){%>
+            <label style="color: Red;">
+              <%= errors.avatar.msg%>
+            </label>
+            <%}%>
         </div>
       </div>
       <div class="main-container-text-inputs-button">

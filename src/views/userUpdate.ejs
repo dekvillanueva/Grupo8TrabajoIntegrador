@@ -30,10 +30,23 @@
           <div class="rounder-container">
             <label for="email">Nombre de usuario</label>
             <div class="text-input-with-icon">
-              <i class="material-icons">person</i>
-              <input class="text-inputs" type="text" name="userName" value="<%=user.user_name%>" id="userName"
-                required />
+              <%if(isFromGet) {%>
+                <i class="material-icons">person</i>
+                <input class="text-inputs" type="text" name="userName" value="<%=user.user_name%>" id="userName"
+                  required />
+                <%}else {%>
+                  <i class="material-icons">person</i>
+                  <input class="text-inputs" type="text" name="userName" value="<%=oldData.userName%>" id="userName"
+                    required />
+                  <%}%>
             </div>
+          </div>
+          <div>
+            <%if(!isFromGet && errors && errors.userName){%>
+              <label style="color: Red;">
+                <%= errors.userName.msg%>
+              </label>
+              <%}%>
           </div>
         </div>
         <div class="main-container-text-inputs-email">
@@ -41,8 +54,8 @@
             <label for="email">Email</label>
             <div class="text-input-with-icon">
               <i class="material-icons">email</i>
-              <input class="text-inputs" type="text" name="userEmail" placeholder="example@gmail.com" value="<%=user.email%>" id="email"
-                required />
+              <input class="text-inputs-disabled" type="text" name="userEmail" readonly="readonly"
+                value="<%=user.email%>" id="email" required />
             </div>
           </div>
         </div>
@@ -50,8 +63,8 @@
           <div class="rounder-container">
             <label for="imagen">Imagen</label>
             <div class="input-container">
-              <img class="avatar-image" src="<%=user.avatar%>" alt="Avatar de usuario">
-              <input class="text-inputs" type="file" name="avatar" id="imagen" 
+              <img class="avatar-image" src="<%=user.avatar%>" alt="Avatar de usuario" />
+              <input class="text-inputs" type="file" name="avatar" id="imagen"
                 value="Por favor selecciones una imagen en formato .jpeg, .jpg, .png, .gif" />
             </div>
           </div>

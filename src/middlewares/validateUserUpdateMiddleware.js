@@ -4,19 +4,18 @@ const { body } = require("express-validator");
 
 module.exports = [
  
-    body("email")
-        .notEmpty()
-        .withMessage("Debes escribir una dirección de email")
-        .bail()
-        .isEmail()
-        .withMessage("Debes escribir un un formato de email válido"),
-    body("password").notEmpty().withMessage("Debes escribir una contraseña"),
+    body("userName")
+    .notEmpty()
+    .withMessage("Este campo no puede estar vacío")
+    .bail()
+    .isLength({min: 2})
+    .withMessage("EL nombre de usuario debe tener al menos 2 caracteres"),
     body("avatar").custom((value, { req }) => {
         let file = req.file;
         let acceptedExtensions = [".jpeg", ".jpg", ".png", ".gif"];
 
         if (!file) {
-            throw new Error("Debes agregar una imagen");
+
         } else {
             let fileExtension = path.extname(file.originalname);
             if (!acceptedExtensions.includes(fileExtension)) {
