@@ -12,8 +12,7 @@ const path = require('path');
 const productsFilePath = path.join(__dirname, '../database/products.json');
 const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 
-
-
+let isFromGet = false;
 
 const manageProductsController = {
 
@@ -34,6 +33,7 @@ const manageProductsController = {
    * @param {*} res 
    */
   createProduct: async (req, res) => {
+    isFromGet = true;
     let categories = [];
     let discounts = [];
     let aux = 0;
@@ -50,7 +50,8 @@ const manageProductsController = {
     }
     res.render("productCreate.ejs", {
       categories: categories,
-      discounts: discounts
+      discounts: discounts,
+      isFromGet: isFromGet,
     });
   },
 
@@ -62,6 +63,17 @@ const manageProductsController = {
    * @returns 
    */
   addProduct: async (req, res, next) => {
+    const resultValidation = validationResult(req);
+
+    if (resultValidation.errors.length > 0) {
+      isFromGet = false;
+      res.render("productCreate.ejs", {
+        isFromGet: isFromGet,
+        errors: resultValidation.mapped(),
+        oldData: req.body,
+      });
+    } else {
+
     const file = req.file
     if (!file) {
       const error = new Error('Please upload a Image File')
@@ -92,6 +104,7 @@ const manageProductsController = {
       .catch(function (error) {
         return res.send(error);
       });
+    }
   },
 
   /**
@@ -100,6 +113,7 @@ const manageProductsController = {
    * @param {*} res 
    */
   updateProduct: async (req, res) => {
+    isFromGet = true;
     let id = req.params.id;
     let productToEdit = await DB.Product.findByPk(id);
 
@@ -120,7 +134,8 @@ const manageProductsController = {
       {
         product: productToEdit,
         categories: categories,
-        discounts: discounts
+        discounts: discounts,
+        isFromGet: isFromGet,
       });
   },
 
