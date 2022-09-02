@@ -24,33 +24,49 @@
     <!--
  ***********   HEADER   ***********************************************
 -->
-<%- include('partials/head.ejs', {title: 'ESSENSOR - Create product' })%>
+    <%- include('partials/head.ejs', {title: 'ESSENSOR - Create product' })%>
 
-    <!--
+        <!--
  ***********   MAIN   ***********************************************
 -->
-    <main>
-        <form action="/productCreate" method="post" enctype="multipart/form-data">
-            <div class="main-container">
-                <div class="main-container-title">
-                    <h2 class="title">Agregar producto</h2>
-                </div>
+        <main>
+            <form action="/productCreate" method="post" enctype="multipart/form-data">
+                <div class="main-container">
+                    <div class="main-container-title">
+                        <h2 class="title">Agregar producto</h2>
+                    </div>
 
-                <div class="main-container-text-inputs">
-                    <div class="rounder-container">
-                        <label for="productName">Nombre del producto</label>
-                        <div class="text-input-with-icon">
-                            <input class="text-inputs" type="text" name="productName" placeholder="Nombre del producto"
-                                id="productName" required />
+                    <div class="main-container-text-inputs">
+                        <div class="rounder-container">
+                            <label for="productName">Nombre del producto</label>
+                            <div class="text-input-with-icon">
+                                <% if(!isFromGet && oldData){ %>
+                                    <input class="text-inputs" type="text" name="productName"
+                                        value="<%= oldData.productName %>" id="productName" required />
+                                    <% } else{ %>
+                                        <input class="text-inputs" type="text" name="productName"
+                                            placeholder="Nombre del producto" id="productName" required />
+                                        <% } %>
+                            </div>
+                        </div>
+                        <div>
+                            <%if(!isFromGet && errors && errors.productName){%>
+                                <label style="color: Red;">
+                                    <%= errors.productName.msg %>
+                                </label>
+                                <%}%>
                         </div>
                     </div>
+
+                </div>
                 </div>
                 <div class="main-container-text-inputs">
                     <div class="rounder-container">
                         <label for="productDescription">Descripción del producto</label>
                         <div>
-                            <textarea name="productDescription" id="" cols="30" rows="5" placeholder="Products description">
-                            </textarea>
+                            <textarea name="productDescription" id="" cols="30" rows="5"
+                                placeholder="Products description">
+                </textarea>
                         </div>
                     </div>
                 </div>
@@ -66,11 +82,17 @@
                     <div class="rounder-container">
                         <label for="categoria">Categoría</label>
                         <div>
-                            <select name="category">
-                                <%for(category of categories){%>
-                                <option value="<%=category%>"><%=category%></option>
-                                <%}%>
-                            </select>
+                            <% if(!isFromGet && oldData){ %>
+
+                                <% } else{ %>
+                                    <select name="category">
+                                        <%for(category of categories){%>
+                                            <option value="<%=category%>">
+                                                <%=category%>
+                                            </option>
+                                            <%}%>
+                                                <% } %>
+                                    </select>
                         </div>
                     </div>
                 </div>
@@ -79,8 +101,8 @@
                     <div class="rounder-container">
                         <label for="precio">Precio</label>
                         <div>
-                            <input class="text-inputs" type="number" min="1" max="999999" name="price" 
-                            required id="precio" placeholder="$precio"/>
+                            <input class="text-inputs" type="number" min="1" max="999999" name="price" required
+                                id="precio" placeholder="$precio" />
                         </div>
                     </div>
                 </div>
@@ -91,25 +113,27 @@
                         <div>
                             <select name="discount">
                                 <%for(discount of discounts){%>
-                                <option value="<%=discount%>"><%=discount%></option>
-                                <%}%>
+                                    <option value="<%=discount%>">
+                                        <%=discount%>
+                                    </option>
+                                    <%}%>
+
                             </select>
                         </div>
                     </div>
                 </div>
 
                 <div class="main-container-text-inputs-button">
-                    <input type="submit" value="Guardar producto" class="button"/>
+                    <input type="submit" value="Guardar producto" class="button" />
                 </div>
-            </div>
-        </form>
-    </main>
+                </div>
+            </form>
+        </main>
 
-    <!--
+        <!--
  ***********   FOOTER   **********************************************************
 -->
-    <%- include('partials/footer.ejs')%>
-
+        <%- include('partials/footer.ejs')%>
 </body>
 
 </html>
