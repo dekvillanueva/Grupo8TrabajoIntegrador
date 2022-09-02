@@ -209,12 +209,26 @@ const userController = {
   },
 
   login: (req, res) => {
-    res.render("login.ejs");
+    isFromGet = true
+    res.render("login.ejs", {
+      isFromGet: isFromGet
+    });
   },
 
   loginProcess: (req, res) => {
-    let userToLogin = findByField("userEmail", req.body.email);
-    console.log(userToLogin);
+    isFromGet = false;
+    const resultValidation = validationResult(req);
+
+    if (resultValidation.errors.length > 0) {
+      res.render("login.ejs", {
+        isFromGet: isFromGet,
+        errors: resultValidation.mapped(),
+        oldData: req.body,
+      });
+    } else {
+      res.render("home.ejs");
+    }
+
   },
 };
 

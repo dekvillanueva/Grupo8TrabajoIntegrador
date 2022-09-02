@@ -10,12 +10,13 @@ const userControllerSq = require("../controllers/userControllerSq");
 const uploadFile = require('../middlewares/multerMiddleware');
 const validationsUserRegister = require('../middlewares/validateUserRegisterMiddleware');
 const validationsUserUpdate = require('../middlewares/validateUserUpdateMiddleware');
+const validationsUserLogin = require('../middlewares/validateUserLoginMiddleware');
 
 
 //Login
-userRouter.get('/login', userController.login);
+userRouter.get('/login', userControllerSq.login);
 //userRouter.post('/login', userController.loginProcess);
-userRouter.post('/login', userControllerSq.loginProcess);
+userRouter.post('/login', validationsUserLogin, userControllerSq.loginProcess);
 //Formulario de registro de usuario - Creación
 //userRouter.get('/userRegister', userController.userRegister);
 userRouter.get('/userRegister', userControllerSq.userRegister)
