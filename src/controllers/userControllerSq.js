@@ -215,7 +215,7 @@ const userController = {
     });
   },
 
-  loginProcess: (req, res) => {
+  loginProcess: async (req, res) => {
     isFromGet = false;
     const resultValidation = validationResult(req);
 
@@ -226,10 +226,17 @@ const userController = {
         oldData: req.body,
       });
     } else {
-      res.render("home.ejs");
+      const userLogged = await DB.User.findOne({where:{email:req.userEmail}});
+      delete userLogged.password; 
+      req.session.userLogged = userLogged; //almaceno el usuario loggeado sin el password en SESSION
+      res.redirect("userDetail.ejs", {userToShow: userLogged}); 
     }
-
   },
+
+  logout: (req, res) => {
+    req.session.destroy();
+    return res.redirect('home');
+  }
 };
 
 //******************************** FUNCIONES AUXILIARES ******************************* */
