@@ -28,7 +28,6 @@ module.exports = [
     .withMessage("Este campo no puede estar vacío")
     .bail()
     .custom(async (value, {req}) => {
-        console.log(req.body.userEmail);
         let user = await DB.User.findOne(
             {
                 where: {email: req.body.userEmail}

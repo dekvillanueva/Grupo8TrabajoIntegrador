@@ -226,10 +226,10 @@ const userController = {
         oldData: req.body,
       });
     } else {
-      const userLogged = await DB.User.findOne({where:{email:req.userEmail}});
+      const userLogged = await DB.User.findOne({where:{email:req.body.userEmail}});
       delete userLogged.password; 
       req.session.userLogged = userLogged; //almaceno el usuario loggeado sin el password en SESSION
-      res.redirect("userDetail.ejs", {userToShow: userLogged}); 
+      res.render("home", {userLogged: userLogged}); 
     }
   },
 

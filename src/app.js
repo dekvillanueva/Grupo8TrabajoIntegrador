@@ -17,7 +17,7 @@ const  port = 3000;
 app.use(express.static(path.join(__dirname, '../public')));
 app.use(session({secret: "Esto es un secreto",
                  resave: false,
-                 saveUninitialized: false}));
+                 saveUninitialized: true}));
 app.use(urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(methodOverride('_method'));

@@ -24,8 +24,10 @@ const manageProductsController = {
    */
   listProducts: async (req, res) => {
     const listOfProducts = await DB.Product.findAll();
+    const listOfCategories = await DB.Category.findAll();
     res.render("productsList.ejs", {
-      products: listOfProducts
+      products: listOfProducts,
+      categories: listOfCategories
     });
   },
   /**

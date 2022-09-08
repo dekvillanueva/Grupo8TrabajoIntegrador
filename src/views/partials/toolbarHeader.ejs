@@ -1,34 +1,47 @@
 <link rel="stylesheet" href="css/toolbarHeaderStyle.css" />
 
-<header class="toolbar blue-color">
-    <div class="toolbar-title">
-        <div class="toolbar-title-in-logo">
-            <img src="assets/images/logo.png" alt="" />
-        </div>
-        <div class="toolbar-buttons">
-            <a href="/login">
-                <i class="fa-solid fa-user"></i>
-            </a>
+<header class="toolbar blue-color fixed-top">
 
-            <a href="">
-                <i class="fa-solid fa-cart-shopping"></i>
-            </a>
-        </div>
+    <div class="toolbar-logo">
+        <img src="assets/images/logo.png" alt="logo Essensor" />
     </div>
 
-    <div class="toolbar-search">
-        <form action="" class="search-form">
-            <input type="text" name="search-words" placeholder="Buscar..." />
-            <button>
-                <i class="fa-solid fa-search"></i>
-            </button>
-        </form>
-    </div>
+    <div class="toolbar-right-side">
 
-    <div class="toolbar-links">
-        <a class="white-color" href="/">Inicio</a>
-        <a class="white-color" href="/productsList">Productos</a>
-        <a class="white-color" href="solutions.html">Soluciones</a>
-        <a class="white-color" href="aboutUs.html">Nosotros</a>
+        <div class="btn-group">
+            <ul class="nav text-white">
+                <li><a href="/" class="btn btn-primary"> Inicio</a></li>
+                <li><a href="/productsList" class="btn btn-primary"> Productos</a></li>
+                <li><a href="#soluciones" class="btn btn-primary"> Soluciones</a></li>
+                <li><a href="#" class="btn btn-primary"> Nosotros</a></li>
+                <%if(userLogged) {%>
+                    <li class="nav-item dropdown" style="min-width: 120px; margin: 10px; display: flex;
+                                                            justify-content: center; align-items: center;">
+                        <img src="<%=userLogged.avatar%>" alt="user avatar" id="user-avatar" class="rounded-circle">
+                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          <%=userLogged.user_name%>
+                        </a>
+                        <ul class="dropdown-menu text-white" aria-labelledby="navbarDropdown">
+                          <li><a class="dropdown-item" href="#">Perfil</a></li>
+                          <li><hr class="dropdown-divider"></li>
+                          <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+                        </ul>
+                      </li>
+                <%} else {%>
+                    <li><a href="/userRegister" class="btn btn-primary"><i class="bi bi-person-circle"></i>
+                        Registrarse</a>
+                <%}%>
+                </li>
+                <%if(!userLogged) {%>
+                    <li><a href="/login" class="btn btn-primary"><i class="bi bi-arrow-right-circle"></i> Iniciar
+                        sesión</a>
+                    </li>
+                <%}%>
+                <%if(userLogged) {%>
+                    <li><a href="/login" class="btn btn-primary"><i class="bi bi-bar-chart"></i> Dashboard</a>
+                    </li>
+                <%}%>
+            </ul>
+        </div>
     </div>
 </header>

@@ -1,80 +1,206 @@
 <!DOCTYPE html>
 <html lang="en">
-<link rel="stylesheet" href="css/homeStyle.css"/>
+<link rel="stylesheet" href="css/homeStyle.css" />
+
 
 <!--***********  HEAD   ************************************************-->
 <%- include('partials/head.ejs', {title: 'ESSENSOR - Inicio' })%>
 
-  <body>
+<body>
 
-    <!--***********  TOOLBAR HEADER   ************************************************-->
-    <%- include('partials/toolbarHeader.ejs')%>
+  <!--***********  TOOLBAR HEADER   ************************************************-->
+  <%- include('partials/toolbarHeader.ejs')%>
 
 
-      <!--***********   SOLUTIONS SECTION   *******************************************-->
+  <main>
 
-      <main>
-        <section class="section-format">
-          <div class="section-title">
-            <h2>SOLUCIONES</h2>
+    <div class="image-home-container">
+      <img src="assets/images/iot-home.png" class="img-fluid" alt="presentation image">
+      <div class="search-wrapper">
+        <form class="d-flex search-input">
+          <input class="form-control search-input" type="search" placeholder="Buscar" aria-label="Search">
+          <button class="btn btn-primary" type="submit">Buscar</button>
+        </form>
+      </div>
+    </div>
+
+    <!--***********   SOLUTIONS SECTION   *******************************************-->
+
+    <section id="soluciones">
+      <div class="mt-25">
+        <h2 class="display-6 border-bottom border-primary text-secondary p-3">Soluciones</h2>
+      </div>
+      <div class="articles-container">
+        <a href="" class="section-img lab-img"><img src="assets/images/lab-app.png" alt="lab-app.png" /></a>
+        <a href="" class="section-img agro-img"> <img src="assets/images/agro-app.png" alt="agro-app.png" /></a>
+        <a href="" class="section-img ind-img"><img src="assets/images/industry-app.png" alt="industry-app.png" /></a>
+      </div>
+    </section>
+
+    <!--
+ ***********   DASHBOARD SECTION   ****************************************************
+-->
+    <section>
+      <div class="mt-25">
+        <h2 class="display-6 border-bottom border-primary text-secondary p-3">Software de monitoreo</h2>
+      </div>
+      <div class="card mb-3 mt-25">
+        <div class="row g-0 ">
+          <div class="col-md-4 ">
+            <img src="assets/images/note-dashboard.jpeg" class="img-fluid rounded-start" alt="...">
           </div>
-          <div class="articles-container">
-            <a href="" class="section-img lab-img"><img src="assets/images/lab-app.png" alt="lab-app.png" /></a>
-
-            <a href="" class="section-img agro-img"> <img src="assets/images/agro-app.png" alt="agro-app.png" /></a>
-
-            <a href="" class="section-img ind-img"><img src="assets/images/industry-app.png"
-                alt="industry-app.png" /></a>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h4 class="card-title">Essensor</h4>
+              <p class="card-text">es una plataforma para el almacenamiento, procesamiento,
+                visualización de datos y gestión de dispositivos IOT.</p>
+              <p class="card-text"><small class="text-muted">Este permite el monitoreo de interiores y ambientes
+                  externos mediante el uso de una
+                  amplia gama de sensores. Essensor permite la adquisición de datos usando tecnologías modernas de
+                  conectividad
+                  (LoRa WAN, MQTT, HTTP, SixFox, CoAP y otras).
+                </small></p>
+            </div>
           </div>
-        </section>
+        </div>
+      </div>
+    </section>
 
-        <!--***********   SALES SECTION   *******************************************-->
-
-        <section class="section-format">
-          <div class="section-title">
-            <h2>OFERTAS</h2>
-          </div>
-
-          <div class="articles-container">
-            <% for(let i=0; i<productos.length; i++){%>
-              <%- include('partials/articleCard.ejs', {product: productos[i]})%>
-                <% } %>
-          </div>
-        </section>
-
-
-        <!--
+    <!--
  ***********   NEWS SECTION   ****************************************************
 -->
-        <section class="section-format">
-          <div class="section-title">
-            <h2>NOVEDADES</h2>
-          </div>
-          <div class="articles-container-news">
-
-            <div class="section-img news-img">
-              <img src="assets/images/silos.png" alt="silos.png" />
-            </div>
-
-            <div class="section-news">
-              <h3 class="news-title">Monitoreo remoto de silos</h3>
-              <p class="news-description">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ut
-                inventore sint, autem eos neque eligendi velit voluptate incidunt
-                rerum nihil nisi qui blanditiis corrupti, culpa sequi enim ducimus
-                architecto eaque.
-              </p>
-            </div>
-
-      </main>
-
-      <!--
- ***********   FOOTER   **********************************************************
--->
-      <div>
-        <%- include('partials/footer.ejs')%>
+    <section>
+      <div class="mt-25">
+        <h2 class="display-6 border-bottom border-primary text-secondary p-3">Novedades</h2>
       </div>
 
-  </body>
+      <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+            aria-current="true" 
+            aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+            aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+            aria-label="Slide 3"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
+            aria-label="Slide 4"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4"
+            aria-label="Slide 5"></button>
+        </div>
+        <div class="carousel-inner">
+          <a href="https://iotbusinessnews.com/2022/09/07/89311-sateliot-the-worlds-first-satellite-operator-to-provide-standard-5g-nb-iot-connectivity-joins-imc/">
+            <div class="carousel-item active" data-bs-interval="2000">
+              <img src="assets/images/new-1.png" class="d-block" alt="...">
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Sateliot, the world’s first satellite operator to provide standard 5G NB-IoT connectivity,
+                   joins IMC</h5>
+                <p>Sateliot has joined the largest trade organization serving the IoT sector 
+                  – the IoT M2M Council (IMC) </p>
+              </div>
+            </div>
+          </a>
+          <a href="https://iotbusinessnews.com/2022/09/02/70352-satellite-iot-helps-make-the-best-of-the-worst/">
+            <div class="carousel-item" data-bs-interval="2000">
+              <img src="assets/images/new-2.png" class="d-block" alt="...">
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Satellite IoT Helps Make the Best of the Worst</h5>
+                <p>Where There’s Smoke, There’s Fire</p>
+              </div>
+            </div>
+          </a>
+          <a
+            href="https://iotbusinessnews.com/2022/09/01/74500-quectel-announces-advanced-rm500q-5g-module-powered-by-nvidia-jetson-agx-orin-32gb-system-on-module/">
+            <div class="carousel-item" data-bs-interval="2000">
+              <img src="assets/images/new-3.png" class="d-block" alt="...">
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Quectel announces advanced RM500Q 5G module powered by NVIDIA Jetson AGX Orin 32GB System-on-Module
+                </h5>
+                <p>NVIDIA is accelerating the next wave of robotics, automation and artificial intelligence IoT</p>
+              </div>
+            </div>
+          </a>
+          <a
+            href="https://iotbusinessnews.com/2022/09/01/95232-the-global-satellite-iot-subscriber-base-to-reach-21-2-million-by-2026/">
+            <div class="carousel-item" data-bs-interval="2000">
+              <img src="assets/images/new-4.png" class="d-block" alt="...">
+              <div class="carousel-caption d-none d-md-block">
+                <h5>The global satellite IoT subscriber base to reach 21.2 million by 2026
+                </h5>
+                <p>According to a new research report from specialist IoT analyst firm Berg Insight, the global satellite IoT 
+                  communications market is growing at a good steady pace.</p>
+              </div>
+            </div>
+          </a>
+          <a
+            href="https://iotbusinessnews.com/2022/07/29/07050-telit-and-thales-announce-the-creation-of-the-leading-western-iot-solutions-provider-telit-cinterion/">
+            <div class="carousel-item" data-bs-interval="2  000">
+              <img src="assets/images/new-5.png" class="d-block" alt="...">
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Telit and Thales Announce the Creation of the Leading Western IoT Solutions Provider:
+                   Telit Cinterion
+                </h5>
+                <p>Telit intends to acquire Thales’ cellular IoT products.</p>
+              </div>
+            </div>
+          </a>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </section>
+
+
+    <!--***********   SALES SECTION   *******************************************-->
+
+    <section>
+      <div class="mt-25">
+        <h2 class="display-6 border-bottom border-primary text-secondary p-3">Ofertas</h2>
+      </div>
+      <div class="card" style="width: 18rem;">
+        <img src="assets/images/temperature-sensor.png" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+            content.</p>
+          <a href="#" class="btn btn-primary">Comprar</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!--***********   ABOUT US SECTION   *******************************************-->
+
+  <section>
+    <div class="mt-25">
+      <h2 class="display-6 border-bottom border-primary text-secondary p-3">Nosotros</h2>
+    </div>
+    
+  </section>
+</main>
+
+  <!--
+ ***********   FOOTER   **********************************************************
+-->
+  <div>
+    <%- include('partials/footer.ejs')%>
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+    integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"
+    integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous">
+  </script>
+</body>
 
 </html>

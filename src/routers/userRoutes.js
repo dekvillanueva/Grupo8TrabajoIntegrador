@@ -18,7 +18,7 @@ const authMiddleware = require('../middlewares/authMiddleware');
 //Login
 userRouter.get('/login', guestMiddleware, userControllerSq.login);
 //userRouter.post('/login', userController.loginProcess);
-userRouter.post('/login', userControllerSq.loginProcess);
+userRouter.post('/login', validationsUserLogin, userControllerSq.loginProcess);
 //Formulario de registro de usuario - Creación
 //userRouter.get('/userRegister', userController.userRegister);
 userRouter.get('/userRegister', guestMiddleware, userControllerSq.userRegister)
@@ -38,6 +38,6 @@ userRouter.delete('/userDelete/:id', userControllerSq.delete);
 // userRouter.get('/usersList', userController.usersList);
 userRouter.get('/usersList', userControllerSq.usersList);
 
-userRouter.get('/logout', userControllerSQ.logout);
+userRouter.get('/logout', userControllerSq.logout);
 
 module.exports = userRouter;
