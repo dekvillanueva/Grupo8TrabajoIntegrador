@@ -15,91 +15,79 @@ header{
   align-items: center;
 }
 
-/* ***********   TOOLBAR SECTION   *************************************************** */
-
-/* .toolbar {
-  width: 100%;
-  height: 10rem;
-  padding-left: 0.5rem;
-  padding-right: 00.5rem;
-}
-
-.toolbar-title {
+main{
   display: flex;
-  justify-content: left;
-  width: 100%;
-  height: 50%;
-}
-
-.toolbar-title-in-logo {
-  display: flex;
-  width: 70%;
-  height: 100%;
   align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: #eceff1;
 }
 
-.toolbar-title-in-logo img {
-  width: 100%;
+.w-70 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
   height: auto;
 }
 
-.toolbar-buttons {
-  display: flex;
-  width: 70%;
+.h-70{
+  height: 70%;
+  width: auto;
+}
+
+.image-home-container {
+  width: 100%;
+  height: 100vh;
+  margin-top: 4rem;
+  position: relative;
+  display: inline-block;
+}
+
+.image-home-container img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.search-wrapper {
+  position: absolute;
+  top:0;
+  left:0;
+  width: 100%;
   height: 100%;
-  justify-content: right;
+  display: flex;
   align-items: center;
+  justify-content: center;
+}
+.search-input{
+  width: 600px;
 }
 
-.toolbar-buttons a {
+section{
   padding-left: 1rem;
+  padding-right: 1rem;
 }
 
-.toolbar-buttons i {
-  color: #fff;
-  font-size: 1.2rem;
-}
-
-.toolbar-search {
-  display: flex;
-  align-items: center;
-  border-radius: 5px;
-  background: #fff;
-  width: 70%;
-  margin-left: 5%;
-  margin-right: 5%;
-}
-
-.search-form{
+.mt-25 {
+  margin-top: 4rem !important;
   width: 100%;
-  display: flex;
 }
 
-.toolbar-search input[type="text"] {
-  width: 80%;
-  height: 1.5rem;
-  border: none;
-  background-color: #fff;
-}
-
-.toolbar-search button {
-  width: 20%;
-  height: 1.5rem;
-  border: none;
-  background-color: #fff;
-}
-
-.toolbar-links {
+.carousel-item{
   width: 100%;
-  display: flex;
-  justify-content: space-around;
   align-items: center;
-  height: 25%;
+  justify-content: center;
+} 
+.carousel-item img{
+  width: 60%;
+  min-width: 100%;
+  height: auto;
+  padding-left: 5rem;
+  padding-right: 5rem;
+  padding-top: 2rem;
+  
 }
-
-.toolbar-links a {
-  text-decoration: none;
-} */
 
 /* ***********   GENERAL SECTIONS   *************************************************** */
 
