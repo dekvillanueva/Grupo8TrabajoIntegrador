@@ -32,11 +32,11 @@
             <div class="text-input-with-icon">
               <%if(isFromGet) {%>
                 <i class="material-icons">person</i>
-                <input class="text-inputs" type="text" name="userName" value="<%=user.user_name%>" id="userName"
+                <input class="form-control" type="text" name="userName" value="<%=user.user_name%>" id="userName"
                   required />
                 <%}else {%>
                   <i class="material-icons">person</i>
-                  <input class="text-inputs" type="text" name="userName" value="<%=oldData.userName%>" id="userName"
+                  <input class="form-control" type="text" name="userName" value="<%=oldData.userName%>" id="userName"
                     required />
                   <%}%>
             </div>
@@ -54,7 +54,7 @@
             <label for="email">Email</label>
             <div class="text-input-with-icon">
               <i class="material-icons">email</i>
-              <input class="text-inputs-disabled" type="text" name="userEmail" readonly="readonly"
+              <input class="form-control" type="text" name="userEmail" readonly="readonly"
                 value="<%=user.email%>" id="email" required />
             </div>
           </div>
@@ -64,13 +64,13 @@
             <label for="imagen">Imagen</label>
             <div class="input-container">
               <img class="avatar-image" src="<%=user.avatar%>" alt="Avatar de usuario" />
-              <input class="text-inputs" type="file" name="avatar" id="imagen"
+              <input class="form-control" type="file" name="avatar" id="imagen"
                 value="Por favor selecciones una imagen en formato .jpeg, .jpg, .png, .gif" />
             </div>
           </div>
         </div>
         <div class="main-container-text-inputs-button">
-          <input class="button-iniciar" type="submit" value="Actualizar usuario" />
+          <input class="btn btn-primary" type="submit" value="Actualizar usuario" />
         </div>
       </div>
     </form>
