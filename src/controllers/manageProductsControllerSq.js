@@ -2,6 +2,7 @@ const DB = require("../database/models");
 const Product = require("../database/models/Product");
 const Category = require("../database/models/Category");
 const { validationResult } = require("express-validator");
+const multerMidd = require("../middlewares/multerMiddlewareProducts");
 const sequelize = DB.sequelize;
 const { Op } = require("sequelize");
 const moment = require("moment");
@@ -65,16 +66,18 @@ const manageProductsController = {
    * @param {*} next 
    * @returns 
    */
-  addProduct: async (req, res, next) => {
+   addProduct: async (req, res, next) => {
     //VALIDACIÓN DE DATOS QUE VIENEN DESDE EL FORMULARIO CON "validateProductCreateMiddleware.js"
     const resultValidation = validationResult(req);
 
     if (resultValidation.errors.length > 0) {
+      const categories = await DB.Category.findAll()
       isFromGet = false;
       res.render("productCreate.ejs", {
         isFromGet: isFromGet,
         errors: resultValidation.mapped(),
         oldData: req.body,
+        categories: categories
       });
     } else {
       const file = req.file;
@@ -118,7 +121,7 @@ const manageProductsController = {
           product_category_id: category[0].dataValues.id,
           product_price: price,
           product_discount: discount,
-          product_image: fileName,
+          product_image: imageName,
         }
 
         //SE GUARDA EL PRODUCTO EN LA DB
@@ -170,41 +173,98 @@ const manageProductsController = {
    * @param {*} req 
    * @param {*} res 
    */
-  editProduct: async (req, res) => {
+   editProduct: async (req, res) => {
     const id = req.params.id
     const file = req.file
-    if (!file) {
-      const error = new Error('Please upload a Image File')
-      error.httpStatusCode = 400
-      res.send(error)
-    }
 
-    let fileName = uploadProductImagesPath + req.file.filename;
-    let name = req.body.productName;
-    let description = req.body.productDescription;
-    let category = await DB.Category.findByPk(req.body.category);
-    let price = req.body.price;
-    let discount = req.body.discount;
+    //VALIDACIÓN DE DATOS QUE VIENEN DESDE EL FORMULARIO CON "validateProductCreateMiddleware.js"
+    const resultValidation = validationResult(req);
 
-
-    const actualizada = await DB.Product.update(
-      {
-        product_name: name,
-        product_description: description,
-        product_category_id: category.dataValues.id,
-        product_price: price,
-        product_discount: discount,
-        product_image: fileName
-      },
-      {
-        where: {
-          product_id: id,
-        },
+    if (resultValidation.errors.length > 0) {
+      let imageProductInDB = "";
+      const file = req.file;
+      if (!file) {
+        const productInDB = await DB.Product.findByPk(req.params.id).then((product) => {
+        imageProductInDB = product.image_product;
+        });
       }
-    );
 
-    res.redirect("/productsList");
+      const product = {
+        product_id: req.params.id,
+        product_name: req.body.productName,
+        product_image: imageProductInDB
+      }
 
+      isFromGet = false;
+
+      res.render("productUpdate.ejs", {
+        isFromGet: isFromGet,
+        errors: resultValidation.mapped(),
+        oldData: req.body,
+        product: product
+      });
+    } else {
+
+      // if (!file) {
+      //   const error = new Error('Please upload a Image File')
+      //   error.httpStatusCode = 400
+      //   res.send(error)
+      // }
+
+     
+      let name = req.body.productName;
+      let description = req.body.productDescription;
+      let category = await DB.Category.findByPk(req.body.category);
+      let price = req.body.price;
+      let discount = req.body.discount;
+
+      if (!file) {
+        let fileName = await DB.Product.findByPk(req.params.id).then((product) => {
+          fileName = product.image_product;
+        });
+      }else {
+        fileName = uploadProductImagesPath + req.file.filename;
+      }
+
+      //BUSCA ENTRE TODOS LOS PRODUCTOS DE LA DB EL NOMBRE DE PRODUCTO INGRESADO
+
+      let productFound = await DB.Product.findAll({ where: { product_name: name } });
+      console.log(productFound)
+      //FIN DE BUSQUEDA DEL NOMBRE DE PRODUCTO
+
+      //SI EL PRODUCTO YA SE ENCUENTRA REGISTRADO, LO INFORMAMOS A LA VISTA
+      if (productFound.length > 0) {
+        isFromGet = false;
+        return res.render("productCreate.ejs", {
+          isFromGet: isFromGet,
+          categories: category,
+          discounts: discount,
+          errors: { productName: { msg: "El producto ingresado ya se encuentra registrado en la base de datos" } },
+          oldData: req.body,
+        });
+      } else {
+
+        //SE CREA EL PRODUCTO QUE SE VA A ALMACENAR EN LA DB
+
+        const actualizada = await DB.Product.update(
+          {
+            product_name: name,
+            product_description: description,
+            product_category_id: category.dataValues.id,
+            product_price: price,
+            product_discount: discount,
+            product_image: fileName
+          },
+          {
+            where: {
+              product_id: id,
+            },
+          }
+        );
+
+        res.redirect("/productsList");
+      }
+    }
   },
 
   /**

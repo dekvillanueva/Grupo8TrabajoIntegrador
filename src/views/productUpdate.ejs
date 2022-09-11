@@ -24,101 +24,148 @@
     <!--
  ***********   HEADER   ***********************************************
 -->
-<%- include('partials/head.ejs', {title: 'ESSENSOR - Update product' })%>
+    <%- include('partials/head.ejs', {title: 'ESSENSOR - Update product' })%>
 
-    <!--
+        <!--
  ***********   MAIN   ***********************************************
 -->
-    <main>
-        <form action="/productUpdate/<%= product.product_id %>?_method=PUT" method="post" enctype="multipart/form-data">
-            <div class="main-container">
-                <div class="main-container-title">
-                    <h2 class="title">Modificar producto</h2>
-                </div>
+        <main>
+            <form action="/productUpdate/<%= product.product_id %>?_method=PUT" method="post"
+                enctype="multipart/form-data" name="productUpdateForm">
+                <div class="main-container">
+                    <div class="main-container-title">
+                        <h2 class="title">Modificar producto</h2>
+                    </div>
 
-                <div class="main-container-text-inputs">
-                    <div class="rounder-container">
-                        <label for="productName">Nombre del producto</label>
-                        <div class="text-input-with-icon">
-                            <input class="text-inputs" type="text" name="productName" placeholder="Nombre del producto"
-                                value="<%=product.product_name%>"
-                                id="productName" required />
+                    <div class="main-container-text-inputs">
+                        <div class="rounder-container">
+                            <label for="productName">Nombre del producto</label>
+                            <div class="text-input-with-icon">
+                                <% if(!isFromGet && oldData){ %>
+                                    <input class="text-inputs" type="text" name="productName"
+                                        value="<%= oldData.productName %>" id="productName" required />
+                                    <% } else{ %>
+                                        <input class="text-inputs" type="text" name="productName"
+                                            value="<%= product.product_name %>" id="productName" required />
+                                        <% } %>
+                            </div>
+                            <div>
+                                <%if(!isFromGet && errors && errors.productName){%>
+                                    <label style="color: Red">
+                                        <%= errors.productName.msg %>
+                                    </label>
+                                    <%}%>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="main-container-text-inputs">
-                    <div class="rounder-container">
-                        <label for="productDescription">Descripción del producto</label>
-                        <div>
-                            <textarea name="productDescription" id="productDescription" cols="30" rows="5"><%=product.product_description%></textarea>
+
+                    <div class="main-container-text-inputs">
+                        <div class="errors">
+                         <ul>
+
+                        </ul>
+                        </div> 
+                    </div>
+
+                    <div class="main-container-text-inputs">
+                        <div class="rounder-container">
+                            <label for="productDescription">Descripción del producto</label>
+                            <div>
+                                <textarea name="productDescription" id="productDescription" cols="30" rows="5">
+<%=product.product_description%></textarea>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="main-container-text-inputs">
-                    <div class="rounder-container">
-                        <label for="imagen">Imagen</label>
-                        <div class="input-container">
-                            <img class="avatar-image" src="<%=product.product_image%>" alt="Imagen de producto">
-                            <input class="text-inputs" type="file" name="image" id="imagen" 
-                              value="Por favor selecciones una imagen en formato .jpeg, .jpg, .png, .gif" />
-                          </div>
-              
-                    </div>
-                </div>
-                <div class="main-container-text-inputs">
-                    <div class="rounder-container">
-                        <label for="categoria">Categoría</label>
-                        <div>
-                            <select name="category">
-                                <%for(category of categories){%>
-                                <option value="<%=product.product_category_id%>"
-                                    <% if(category.id==product.product_category_id){%>
-                                        selected = "selected"
-                                        <%}%> ><%=category.name%></option>
-                                <%}%>
-                            </select>
+                    <div class="main-container-text-inputs">
+                        <div class="rounder-container">
+                            <label for="imagen"></label>
+                            <div class="input-container">
+                                <img class="avatar-image" src="<%=product.product_image%>" alt="Imagen de producto" />
+                                <input class="text-inputs" type="file" name="image" id="imagen"
+                                    value="Por favor selecciones una imagen en formato .jpeg, .jpg, .png, .gif" />
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="main-container-text-inputs">
-                    <div class="rounder-container">
-                        <label for="precio">Precio</label>
-                        <div>
-                            <input class="text-inputs" value="<%=product.product_price%>" type="text" name="price" id="precio" placeholder="$precio"
-                                />
+                    <div class="main-container-text-inputs">
+                        <div class="rounder-container">
+                            <label for="categoria">Categoría</label>
+                            <div>
+                                <% if(!isFromGet && oldData){ %>
+                                    <select name="category">
+                                        <option value="<%=category%>">
+                                            <%=oldData.category%>
+                                        </option>
+                                    </select>
+                                    <% } else{ %>
+                                        <select name="category">
+                                            <%for(category of categories){%>
+                                                <option value="<%=category.name%>" <%
+                                                    if(product.product_category==category.name){ %>
+                                                    selected="selected"
+                                                    <% } %> >
+                                                        <%=category.name%>
+                                                </option>
+                                                <% } %>
+                                                    <% } %>
+                                        </select>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="main-container-text-inputs">
-                    <div class="rounder-container">
-                        <label for="descuento">Descuento</label>
-                        <div>
-                            <select name="discount">
-                                <%for(discount of discounts){%>
-                                <option value="<%=discount%>"
-                                    <% if(discount==product.product_discount){%>
-                                        selected = "selected"
-                                        <%}%> ><%=discount%></option>
-                                <%}%>
-                            </select>
+                    <div class="main-container-text-inputs">
+                        <div class="rounder-container">
+                            <label for="precio">Precio</label>
+                            <div>
+                                <% if(!isFromGet && oldData){ %>
+                                    <input class="text-inputs" type="number" name="price" value="<%= oldData.price %>"
+                                        id="precio" required />
+                                    <% } else{ %>
+                                        <input class="text-inputs" type="number" min="1" max="999999" name="price"
+                                            required id="precio" value="<%= product.product_price %>" />
+                                        <% } %>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="main-container-text-inputs-button">
-                    <input type="submit" method="post" name="_method" value="Modificar producto" class="button"/>
-                </div>
-            </div>
-        </form>
-    </main>
+                    <div class="main-container-text-inputs">
+                        <div class="rounder-container">
+                            <label for="descuento">Descuento</label>
+                            <div>
+                                <% if(!isFromGet && oldData){ %>
+                                    <select name="discount">
+                                        <option value="<%=discount%>">
+                                            <%=oldData.discount%>
+                                        </option>
+                                    </select>
+                                    <% } else{ %>
+                                        <select name="discount">
+                                            <%for(discount of discounts){%>
+                                                <option value="<%=discount%>" <% if(product.product_discount==discount){
+                                                    %>
+                                                    selected="selected"
+                                                    <%} %> >
+                                                        <%=discount%>
+                                                </option>
+                                                <%}%>
+                                                    <% } %>
+                                        </select>
+                            </div>
+                        </div>
+                    </div>
 
-    <!--
+                    <div class="main-container-text-inputs-button">
+                        <input type="submit" method="post" name="_method" value="Modificar producto" class="button" />
+                    </div>
+                </div>
+            </form>
+        </main>
+
+        <!--
  ***********   FOOTER   **********************************************************
 -->
-    <%- include('partials/footer.ejs')%>
-
+        <%- include('partials/footer.ejs')%>
 </body>
 
 </html>
+
+<script src="/public/js/validateProductsFront.js"></script>

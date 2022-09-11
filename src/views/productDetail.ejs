@@ -4,51 +4,62 @@
 
 <!--***********  HEAD   ************************************************-->
 
-<%- include('partials/head.ejs', {title: 'ESSENSOR - Product detail'})%>
+<%- include('partials/head.ejs', {title: 'ESSENSOR - Product detail' })%>
 
-<!--
+  <!--
  ***********   BODY   ************************************************
 -->
 
-<body>
+  <body>
 
-  <!--***********  TOOLBAR HEADER   ************************************************-->
-  <header>
-    <div class="header">
-      <img src="/assets/images/logo.png" alt="Essensor logo" />
-    </div>
-  </header>
-
-  <!--***********   MAIN   ***********************************************-->
-  <main>
-    <div class="main-container">
-      <div class="image-container">
-        <img src="<%= productToShow.product_image %>" alt="imagen de producto">
+    <!--***********  TOOLBAR HEADER   ************************************************-->
+    <header>
+      <div class="header">
+        <img src="/assets/images/logo.png" alt="Essensor logo" />
       </div>
-      <div class="product-description-container">
-        <div class="product-items-container">
-          <h2><%=productToShow.product_name%></h4>
-          <h3>$ <%=productToShow.product_price%></h3>
-          <h4><%=productToShow.product_discount%> %</h5>
-          <p><%=productToShow.product_description%></p>
-          <div class="buttons-container">
+    </header>
+
+    <!--***********   MAIN   ***********************************************-->
+    <main>
+      <div class="main-container">
+        <div class="image-container">
+          <img class product-img src="<%= productToShow.product_image %>" alt="imagen de producto">
+        </div>
+        <div class="product-description-container">
+          <div class="product-items-container">
+            <h3>
+              <%=productToShow.product_name%>
+            </h3>
+            <p class="description">
+              <%=productToShow.product_description%>
+            </p>
+            <h5>
+              Precio de lista: $<%=productToShow.product_price%>
+            </h5>
+            <h5 class="discount">
+              <% if(productToShow.product_discount>0){ %>
+                Descuento: <%=productToShow.product_discount%> %
+              <% } else{ %>
+                    <% } %>
+            </h5>
+            <div class="buttons-container">
               <a href="/productUpdate/<%=productToShow.product_id%>">
                 <button class="button">Actualizar</button>
               </a>
               <form method="post" action="/productDelete/<%=productToShow.product_id%>?_method=DELETE">
                 <input type="submit" name="_method" class="button" value="Eliminar">
               </form>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </main>
+    </main>
 
 
-  <!--
+    <!--
  ***********   FOOTER   ***********************************************
 -->
-  <%- include('partials/footer.ejs')%>
-</body>
+    <%- include('partials/footer.ejs')%>
+  </body>
 
 </html>

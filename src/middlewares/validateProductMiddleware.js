@@ -9,7 +9,7 @@ module.exports = [
     .withMessage("Este campo no puede estar vacío")
     .bail()
     .isLength({min: 2})
-    .withMessage("EL nombre de usuario debe tener al menos 2 caracteres"),
+    .withMessage("EL nombre del producto debe tener al menos 2 caracteres"),
     body("price")
         .notEmpty()
         .withMessage("Este campo no puede estar vacío")
