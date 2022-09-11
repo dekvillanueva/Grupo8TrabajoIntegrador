@@ -229,11 +229,17 @@ const userController = {
       const userLogged = await DB.User.findOne({where:{email:req.body.userEmail}});
       delete userLogged.password; 
       req.session.userLogged = userLogged; //almaceno el usuario loggeado sin el password en SESSION
+
+      if(req.body.rememberUser){
+        res.cookie('userEmail', req.body.userEmail, {maxAge: (1000*60)*30});
+
+      }
       return res.redirect("/");
     }
   },
 
   logout: (req, res) => {
+    res.clearCookie('userEmail');
     req.session.destroy();
     isFromGet = true;
     return res.redirect("login");

@@ -71,6 +71,7 @@ a {
     display: flex;
     flex-direction: column;
     border-radius: 20px;
+    min-width: 450px;
     padding: 0.8rem;
     background: #fff;
 }
@@ -163,6 +164,10 @@ a {
     font-size: 1.0125rem;
     transform: scale(1);
     transition: all 0.2s linear;
+}
+
+.btn-primary{
+    width: 200px;
 }
 
 .button-iniciar:hover {
@@ -295,6 +300,8 @@ footer {
 .footer-menu ul li a:hover {
     color: #fff;
 }
+
+
 
 /*------ALL SETTING---------*/
 * {

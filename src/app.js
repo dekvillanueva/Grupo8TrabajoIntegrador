@@ -10,6 +10,7 @@ const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const { urlencoded } = require('express');
 const userLoggedMiddleware = require("./middlewares/userLoggedMiddleware");
+const cookies = require('cookie-parser');
 
 
 const  port = 3000;
@@ -19,6 +20,7 @@ app.use(express.static(path.join(__dirname, '../public')));
 app.use(session({secret: "Esto es un secreto",
                  resave: false,
                  saveUninitialized: true}));
+app.use(cookies());
 app.use(urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(methodOverride('_method'));
