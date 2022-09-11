@@ -37,7 +37,7 @@ userRouter.delete('/userDelete/:id', userControllerSq.delete);
 //Listar usuarios
 // userRouter.get('/usersList', userController.usersList);
 userRouter.get('/usersList', userControllerSq.usersList);
-
+//Logout User
 userRouter.get('/logout', userControllerSq.logout);
 
 module.exports = userRouter;

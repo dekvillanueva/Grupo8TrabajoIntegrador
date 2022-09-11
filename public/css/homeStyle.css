@@ -67,6 +67,7 @@ main{
 section{
   padding-left: 1rem;
   padding-right: 1rem;
+  width: 100%;
 }
 
 .mt-25 {
@@ -88,6 +89,38 @@ section{
   padding-top: 2rem;
   
 }
+
+.cards-wrapper{
+  display: flex;
+}
+
+.card{
+  margin: 0 .5em;
+  width: calc(100%/3);
+}
+
+.card-img-top{
+  min-height: 150px;
+  max-height: 150px;
+  max-width: auto;
+  min-width: auto;
+}
+
+.card-body-wide{
+  width: 100%;
+}
+
+.card-body{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-text-green{
+  color: #1faa00;
+}
+
 
 /* ***********   GENERAL SECTIONS   *************************************************** */
 

@@ -44,7 +44,7 @@
       <div class="mt-25">
         <h2 class="display-6 border-bottom border-primary text-secondary p-3">Software de monitoreo</h2>
       </div>
-      <div class="card mb-3 mt-25">
+      <div class="card mb-3 card-body-wide">
         <div class="row g-0 ">
           <div class="col-md-4 ">
             <img src="assets/images/note-dashboard.jpeg" class="img-fluid rounded-start" alt="...">
@@ -77,8 +77,7 @@
       <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-            aria-current="true" 
-            aria-label="Slide 1"></button>
+            aria-current="true" aria-label="Slide 1"></button>
           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
             aria-label="Slide 2"></button>
           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
@@ -89,13 +88,14 @@
             aria-label="Slide 5"></button>
         </div>
         <div class="carousel-inner">
-          <a href="https://iotbusinessnews.com/2022/09/07/89311-sateliot-the-worlds-first-satellite-operator-to-provide-standard-5g-nb-iot-connectivity-joins-imc/">
+          <a
+            href="https://iotbusinessnews.com/2022/09/07/89311-sateliot-the-worlds-first-satellite-operator-to-provide-standard-5g-nb-iot-connectivity-joins-imc/">
             <div class="carousel-item active" data-bs-interval="2000">
               <img src="assets/images/new-1.png" class="d-block" alt="...">
               <div class="carousel-caption d-none d-md-block">
                 <h5>Sateliot, the world’s first satellite operator to provide standard 5G NB-IoT connectivity,
-                   joins IMC</h5>
-                <p>Sateliot has joined the largest trade organization serving the IoT sector 
+                  joins IMC</h5>
+                <p>Sateliot has joined the largest trade organization serving the IoT sector
                   – the IoT M2M Council (IMC) </p>
               </div>
             </div>
@@ -127,7 +127,8 @@
               <div class="carousel-caption d-none d-md-block">
                 <h5>The global satellite IoT subscriber base to reach 21.2 million by 2026
                 </h5>
-                <p>According to a new research report from specialist IoT analyst firm Berg Insight, the global satellite IoT 
+                <p>According to a new research report from specialist IoT analyst firm Berg Insight, the global
+                  satellite IoT
                   communications market is growing at a good steady pace.</p>
               </div>
             </div>
@@ -138,7 +139,7 @@
               <img src="assets/images/new-5.png" class="d-block" alt="...">
               <div class="carousel-caption d-none d-md-block">
                 <h5>Telit and Thales Announce the Creation of the Leading Western IoT Solutions Provider:
-                   Telit Cinterion
+                  Telit Cinterion
                 </h5>
                 <p>Telit intends to acquire Thales’ cellular IoT products.</p>
               </div>
@@ -165,27 +166,141 @@
       <div class="mt-25">
         <h2 class="display-6 border-bottom border-primary text-secondary p-3">Ofertas</h2>
       </div>
-      <div class="card" style="width: 18rem;">
-        <img src="assets/images/temperature-sensor.png" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-            content.</p>
-          <a href="#" class="btn btn-primary">Comprar</a>
+
+      <div id="carouselExampleControls" class="carousel carousel-dark slide" data-interval="false">
+        <div class="carousel-inner">
+
+          <%let firstItem = true;%>
+          <%const chunkSize = 3;%>
+
+          <%for (let i = 0; i < listOfProductsWithDiscount.length; i += chunkSize) {%>
+            <% const products = listOfProductsWithDiscount.slice(i, i + chunkSize);%>
+            <%if(firstItem) {%>
+
+              <div class="carousel-item active">
+                <div class="cards-wrapper">
+              <%firstItem = false%>
+
+            <%} else {%>
+              
+              <div class="carousel-item">
+                <div class="cards-wrapper">
+
+            <%}%>
+            <% for(product of products) {%>
+             
+              <div class="card" >
+                <img src="<%=product.product_image%>" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title"><%=product.product_name%></h5>
+                  <h6 class="card-text-green"><%=product.product_discount%> % OFF</h6>
+                  <a href="#" class="btn btn-primary">Comprar</a>
+                </div>
+              </div>
+
+            <%}%>
+              </div> 
+            </div>
+          <%}%>
+
         </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
       </div>
+      
     </section>
-  </main>
 
   <!--***********   ABOUT US SECTION   *******************************************-->
 
-  <section>
+  <section id="nosotros">
     <div class="mt-25">
       <h2 class="display-6 border-bottom border-primary text-secondary p-3">Nosotros</h2>
     </div>
-    
+
+    <div class="card mb-3" style="min-width:100%;">
+      <div class="row g-0">
+        <div class="col-md-4" style="display: flex; align-items: center;">
+          <img src="assets/images/vision.png" class="img-fluid rounded-start" alt="...">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h3 class="card-title">Visión</h3>
+            <p class="card-text">Con las tecnologías de automatización, <b>ESSENSOR</b> contribuye a mejorar las condiciones de vida y de 
+                trabajo de todas las personas. Sus productos, servicios y software ayudan a proteger el 
+                medio ambiente en todo el mundo y a reducir las emisiones de CO2 y el uso de energía y materiales.</p>
+            <p>
+              La amplísima gama de productos de ESSENSOR no solo cuenta con todas las soluciones estándar destacadas, 
+              sino que también contempla los requisitos especiales de los distintos sectores.
+            </p>
+            <p>
+              ESSENSOR desarrolla <b>soluciones innovadoras de la Industria 4.0 </b> y los correspondientes 
+              productos de software y servicios en la nube para permitir una gestión digital de 
+              los procesos empresariales existentes y ofrecer nuevas opciones de control integral
+              con el fin de lograr una eficiencia sostenible y una optimización de costes.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card mb-3" style="min-width:100%;">
+      <div class="row g-0">
+        <div class="col-md-4" style="display: flex; align-items: center;">
+          <img src="assets/images/mision.png" class="img-fluid rounded-start" alt="...">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h3 class="card-title">Misión</h3>
+            <p class="card-text">La calidad es para nosotros un concepto que va más allá del producto. 
+              Todos nuestros procesos están diseñados pensando en el <b>servicio al cliente</b> y en la <b>calidad de 
+              los productos</b>. Ofrecemos asistencia <b>personalizada</b> a cada cliente, en cualquier lugar del mundo 
+              y en cualquier idioma.
+            </p>
+            <p>
+              Escuchamos la opinión de nuestros clientes para mejorar continuamente la calidad de nuestros 
+              productos. Mediante pruebas especiales, nuestros sensores son expuestos a condiciones por encima de
+              sus límites, para garantizar así que nuestras expectativas se vean cumplidas en los procesos 
+              de los clientes. Por otra parte, todos los productos son sometidos a un control final antes de 
+              abandonar la fábrica. Este compromiso nos lo tomamos muy en serio y por ello ofrecemos una 
+              garantía de 3 años en todos los productos.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="card mb-3" style="min-width:100%;">
+      <div class="row g-0">
+        <div class="col-md-4" style="display: flex; align-items: center;">
+          <img src="assets/images/objetives.png" class="img-fluid rounded-start" alt="...">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h3 class="card-title">Objetivos</h3>
+            <p class="card-text">Consideramos que la <b>creación de valor sostenible </b>es un 
+              requisito previo para nuestro éxito empresarial. Al fin y al cabo, 
+              los productos duraderos y de alta calidad de ESSENSOR no solo contribuyen a la 
+              conservación de los recursos, sino que también aumentan la <b>satisfacción del cliente</b>.
+            </p>
+            <p>
+              Para nosotros, la acción respetuosa con el medio ambiente empieza en casa y no solo está 
+              asociada a la eficiencia energética o al uso de energías renovables. La construcción y la fabricación
+              respetuosa con el medio ambiente y climáticamente neutra.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </section>
-</main>
+  </main>
 
   <!--
  ***********   FOOTER   **********************************************************

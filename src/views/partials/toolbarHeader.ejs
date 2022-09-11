@@ -13,32 +13,37 @@
                 <li><a href="/" class="btn btn-primary"> Inicio</a></li>
                 <li><a href="/productsList" class="btn btn-primary"> Productos</a></li>
                 <li><a href="#soluciones" class="btn btn-primary"> Soluciones</a></li>
-                <li><a href="#" class="btn btn-primary"> Nosotros</a></li>
-                <%if(userLogged) {%>
-                    <li class="nav-item dropdown" style="min-width: 120px; margin: 10px; display: flex;
-                                                            justify-content: center; align-items: center;">
-                        <img src="<%=userLogged.avatar%>" alt="user avatar" id="user-avatar" class="rounded-circle">
-                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          <%=userLogged.user_name%>
-                        </a>
-                        <ul class="dropdown-menu text-white" aria-labelledby="navbarDropdown">
-                          <li><a class="dropdown-item" href="#">Perfil</a></li>
-                          <li><hr class="dropdown-divider"></li>
-                          <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
-                        </ul>
-                      </li>
+                <li><a href="#nosotros" class="btn btn-primary"> Nosotros</a></li>
+                <%if(locals.isLogged) {%>
+                    
                 <%} else {%>
                     <li><a href="/userRegister" class="btn btn-primary"><i class="bi bi-person-circle"></i>
                         Registrarse</a>
+                    </li>
                 <%}%>
-                </li>
-                <%if(!userLogged) {%>
+
+                <%if(!locals.isLogged) {%>
                     <li><a href="/login" class="btn btn-primary"><i class="bi bi-arrow-right-circle"></i> Iniciar
                         sesión</a>
                     </li>
                 <%}%>
-                <%if(userLogged) {%>
+                <%if(locals.isLogged && locals.userLogged.is_admin) {%>
                     <li><a href="/login" class="btn btn-primary"><i class="bi bi-bar-chart"></i> Dashboard</a>
+                    </li>
+                <%}%>
+                <% if(locals.isLogged) {%>
+                    <div style="display: flex; justify-content: flex-end; align-items: center; margin-left: 4rem;">
+                        <img src="<%=locals.userLogged.avatar%>" alt="user avatar" id="user-avatar" class="rounded-circle">
+                    </div>
+                    <li class="nav-item dropdown btn-primary" >
+                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          <%=locals.userLogged.user_name%>
+                        </a>
+                        <ul class="dropdown-menu text-white" aria-labelledby="navbarDropdown">
+                          <li><a class="dropdown-item" href="/userDetail/<%=locals.userLogged.user_id%>">Perfil</a></li>
+                          <li><hr class="dropdown-divider"></li>
+                          <li><a class="dropdown-item" href="/logout">Cerrar sesión</a></li>
+                        </ul>
                     </li>
                 <%}%>
             </ul>

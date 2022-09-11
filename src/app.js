@@ -9,6 +9,7 @@ const userRouter = require("./routers/userRoutes");
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const { urlencoded } = require('express');
+const userLoggedMiddleware = require("./middlewares/userLoggedMiddleware");
 
 
 const  port = 3000;
@@ -21,6 +22,7 @@ app.use(session({secret: "Esto es un secreto",
 app.use(urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(methodOverride('_method'));
+app.use(userLoggedMiddleware);
 
 // Views
 app.set('views', path.join(__dirname, 'views'));
@@ -34,7 +36,6 @@ app.use('/', userRouter);
 
 
 app.listen(port, () =>{
-    console.log("Server run on port 3000"
-        );
+    console.log("Server run on port 3000");
 
 })

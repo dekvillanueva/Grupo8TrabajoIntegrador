@@ -200,7 +200,7 @@ const userController = {
     let user = await DB.User.findByPk(req.params.id);
     await user.destroy();
 
-    res.redirect("/usersList");
+    res.redirect("/");
   },
 
   usersList: async (req, res) => {
@@ -229,13 +229,14 @@ const userController = {
       const userLogged = await DB.User.findOne({where:{email:req.body.userEmail}});
       delete userLogged.password; 
       req.session.userLogged = userLogged; //almaceno el usuario loggeado sin el password en SESSION
-      res.render("home", {userLogged: userLogged}); 
+      return res.redirect("/");
     }
   },
 
   logout: (req, res) => {
     req.session.destroy();
-    return res.redirect('home');
+    isFromGet = true;
+    return res.redirect("login");
   }
 };
 

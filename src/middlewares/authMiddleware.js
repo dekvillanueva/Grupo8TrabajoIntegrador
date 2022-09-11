@@ -1,6 +1,6 @@
 function authMiddleware(req, resp, next){
     if(!req.session.userLogged){
-        return resp.redirect("../views/login.ejs");
+        return resp.render("../views/home.ejs");
     }else{
         next();
     }
