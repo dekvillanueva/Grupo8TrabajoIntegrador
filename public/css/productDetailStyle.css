@@ -9,7 +9,7 @@
 body {
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
-    background-color: rgb(219, 227, 242);
+    background-color: #eceff1;
 }
 
 main {
@@ -32,9 +32,9 @@ main {
 .main-container {
     padding: 1rem;
     display: flex;
-    flex-wrap: wrap;
-    width: 80%;
-    background-color: #eeeeee;
+    flex-wrap:nowrap;
+    width: 100%;
+    background-color:#eceff1;
 }
 
 .image-container {
@@ -44,7 +44,7 @@ main {
     justify-content: center;
     width: 100%;
     height: auto;
-    background-color: #fff;
+    background-color: white;
 }
 
 img {
@@ -58,7 +58,15 @@ img {
     display: flex;
     width: 100%;
     height: auto;
-    background-color: #eeeeee;
+    background-color: #eceff1;
+}
+
+h5.discount{
+    color: rgb(20, 207, 20);
+}
+
+p.description{
+    white-space: pre-wrap;
 }
 
 .product-items-container {
@@ -68,7 +76,7 @@ img {
     align-items: center;
     justify-content: center;
     padding: 2rem;
-    background-color: #fff;
+    background-color: rgb(182, 20, 20);
 }
 
 .buttons-container {
