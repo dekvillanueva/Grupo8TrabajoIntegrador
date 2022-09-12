@@ -42,13 +42,17 @@
               <% } else{ %>
                     <% } %>
             </h5>
-            <div class="buttons-container">
-              <a href="/productUpdate/<%=productToShow.product_id%>">
-                <button class="button">Actualizar</button>
-              </a>
-              <form method="post" action="/productDelete/<%=productToShow.product_id%>?_method=DELETE">
-                <input type="submit" name="_method" class="button" value="Eliminar">
-              </form>
+            <div class="buttons-container" >
+              <%if(locals.isLogged && locals.userLogged.is_admin) {%>
+                <a href="/productUpdate/<%=productToShow.product_id%>">
+                  <button class="btn btn-primary" style="width: 120px; margin-right: 0.5rem;">Actualizar</button>
+                </a>
+                <form method="post" action="/productDelete/<%=productToShow.product_id%>?_method=DELETE">
+                  <input type="submit" name="_method" style="width: 120px; margin-left: 0.5rem;" class="btn btn-primary" value="Eliminar">
+                </form>
+              <% }else {%>
+                <a class="btn btn-primary" href="/" role="button">Comprar</a>
+              <% }%>
             </div>
           </div>
         </div>
@@ -60,6 +64,20 @@
  ***********   FOOTER   ***********************************************
 -->
     <%- include('partials/footer.ejs')%>
+
+
+        <!--
+ ***********   BOOSTRAP SCRIPTS   **********************************************************
+-->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"
+integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous">
+</script>
+
+
+
   </body>
 
 </html>

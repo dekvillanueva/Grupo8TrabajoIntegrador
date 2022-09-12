@@ -46,18 +46,21 @@
             <div class="text-input-with-icon">
               <i class="material-icons">person</i>
               <% if(!isFromGet && oldData){ %>
-              <input class="form-control" type="text" name="userName" onkeyup="checkUserNameInput(event)" value="<%= oldData.userName %>" id="userName"
+              <input class="form-control" type="text" name="userName" value="<%= oldData.userName %>" id="userName"
                 required />
               <% } else{ %>
-              <input class="form-control" type="text" name="userName" onkeyup="checkUserNameInput(event)" value="" id="userName" required />
+              <input class="form-control" type="text" name="userName" value="" id="userName" required />
               <% } %>
             </div>
           </div>
-          <%if(!isFromGet && errors && errors.userName){%>
-          <label style="color: Red;">
-            <%= errors.userName.msg %>
-          </label>
-          <%}%>
+          <div>
+            <label id="userNameError" style="color: Red;"></label>
+            <%if(!isFromGet && errors && errors.userName){%>
+            <label style="color: Red;">
+              <%= errors.userName.msg %>
+            </label>
+            <%}%>
+          </div>
         </div>
       </div>
       </div>
@@ -67,19 +70,23 @@
           <div class="text-input-with-icon">
             <i class="material-icons">email</i>
             <% if(!isFromGet && oldData){ %>
-          <input class="form-control" type="text" name="userEmail" onkeyup="checkEmailInput(event)" value="<%= oldData.userEmail %>" id="email"
-            required />
-          <% } else{ %>
-          <input class="form-control" type="text" name="userEmail" onkeyup="checkEmailInput(event)" value="" id="email" required />
-          <% } %>
+            <input class="form-control" type="text" name="userEmail" value="<%= oldData.userEmail %>" id="email"
+              required />
+            <% } else{ %>
+            <input class="form-control" type="text" name="userEmail" value="" id="email" required />
+            <% } %>
 
+          </div>
         </div>
-      </div>
-      <%if(!isFromGet && errors && errors.userEmail){%>
-      <label style="color: Red;">
-        <%= errors.userEmail.msg%>
-      </label>
-      <%}%>
+        <div>
+          <label id="emailError" style="color: Red;">
+          </label>
+          <%if(!isFromGet && errors && errors.userEmail){%>
+          <label style="color: Red;">
+            <%= errors.userEmail.msg%>
+          </label>
+          <%}%>
+        </div>
       </div>
       <div class="main-container-text-inputs-clave">
         <div class="rounder-container">
@@ -87,14 +94,17 @@
           <div class="text-input-with-icon">
             <i class="material-icons">lock</i>
             <% if(!isFromGet && oldData){ %>
-      <input class="form-control" type="password" name="userPassword" onkeyup="checkPaswordInput(event)" value="<%= oldData.userPassword %>"
-        id="userPassword" required />
-      <% } else{ %>
-      <input class="form-control" type="password" name="userPassword" onkeyup="checkPaswordInput(event)" value="" id="userPassword" required />
-      <% } %>
-      </div>
+          <input class="form-control" type="password" name="userPassword" 
+            value="<%= oldData.userPassword %>" id="userPassword" required />
+          <% } else{ %>
+          <input class="form-control" type="password" name="userPassword" value=""
+            id="userPassword" required />
+          <% } %>
+        </div>
       </div>
       <div>
+        <label id="passwordError" style="color: Red;">
+        </label>
         <%if(!isFromGet && errors && errors.userPassword){%>
         <label style="color: Red;">
           <%= errors.userPassword.msg%>
@@ -109,20 +119,23 @@
           <div class="text-input-with-icon">
             <i class="material-icons">lock</i>
             <% if(!isFromGet && oldData){ %>
-        <input class="form-control" type="password" name="userRepitPassword" onkeyup="checkPaswordRepitInput(event)" value="<%= oldData.userRepitPassword %>"
-          id="repit-password" required />
+        <input class="form-control" type="password" name="userRepitPassword"
+          value="<%= oldData.userRepitPassword %>" id="repit-password" required />
         <% } else{ %>
-        <input class="form-control" type="password" name="userRepitPassword" onkeyup="checkPaswordRepitInput(event)" value="" id="userRepitPassword" required />
+        <input class="form-control" type="password" name="userRepitPassword"
+          value="" id="userRepitPassword" required />
         <% } %>
       </div>
       </div>
       <div>
+        <label id="passwordRepeatError" style="color: Red;">
+        </label>
         <%if(!isFromGet && errors && errors.userRepitPassword){%>
         <label style="color: Red;">
           <%= errors.userRepitPassword.msg%>
         </label>
         <%}%>
-        </div>
+      </div>
       </div>
       <div class="main-container-text-inputs-image">
         <div class="rounder-container">
@@ -133,15 +146,17 @@
           </div>
         </div>
         <div>
+          <label id="fileError" style="color: Red;">
+            </label>
           <%if(!isFromGet && errors && errors.avatar){%>
-        <label style="color: Red;">
-          <%= errors.avatar.msg%>
-        </label>
-        <%}%>
+            <label style="color: Red;">
+            <%= errors.avatar.msg%>
+            </label>
+          <%}%>
         </div>
       </div>
       <div class="main-container-text-inputs-button">
-        <input class="btn btn-primary" type="submit" value="Crear cuenta" />
+        <input class="btn btn-primary" type="submit" id="btnGuardar" value="Crear cuenta" />
       </div>
       </div>
     </form>
@@ -150,61 +165,7 @@
   <!--
  ***********  VALIDATIONS SCRIPTS   **********************************************************
 -->
-<script type="text/javascript">
-  function checkPaswordInput(event) {
-    const inputPassword = document.querySelector("#userPassword");
-    let value = document.getElementById("userPassword").value;
-    if (value.length < 8) {
-      inputPassword.classList.remove("is-valid");
-      inputPassword.classList.add("is-invalid");
-    } else {
-      inputPassword.classList.add("is-valid");
-      inputPassword.classList.remove("is-invalid");
-    }
-  }
-
-  function checkUserNameInput(event) {
-    const inputUserName = document.querySelector("#userName");
-    let value = document.getElementById("userName").value;
-    if (value.length < 2) {
-      inputUserName.classList.remove("is-valid");
-      inputUserName.classList.add("is-invalid");
-    } else {
-      inputUserName.classList.add("is-valid");
-      inputUserName.classList.remove("is-invalid");
-    }
-  }
-
-  function checkPaswordRepitInput(event) {
-    const inputPassword = document.querySelector("#userRepitPassword");
-    let value = document.getElementById("userRepitPassword").value;
-    if (value.length < 8) {
-      inputPassword.classList.remove("is-valid");
-      inputPassword.classList.add("is-invalid");
-    } else {
-      inputPassword.classList.add("is-valid");
-      inputPassword.classList.remove("is-invalid");
-    }
-  }
-
-  function checkEmailInput(event) {
-    const inputEmail = document.querySelector("#email");
-    let value = document.getElementById("email").value;
-    if (!isEmail(value)) {
-      inputEmail.classList.remove("is-valid");
-      inputEmail.classList.add("is-invalid");
-    } else {
-      inputEmail.classList.add("is-valid");
-      inputEmail.classList.remove("is-invalid");
-    }
-  }
-
-  function isEmail(email) {
-    return /^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))$/i
-      .test(email);
-  }
-</script>
-
+<script src="/js/userRegisterValidations.js"></script>
   <!--
  ***********   FOOTER   **********************************************************
 -->
