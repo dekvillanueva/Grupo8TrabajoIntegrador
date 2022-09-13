@@ -10,11 +10,16 @@ const homeController = {
         }
       }
     });
+
+    const listOfCategories = await DB.Category.findAll();
+
     res.render("home", {
       userLogged: req.session.userLogged,
-      listOfProductsWithDiscount: listOfProductsWithDiscount
+      listOfProductsWithDiscount: listOfProductsWithDiscount,
+      categories: listOfCategories
     });
   },
+
 };
 
 module.exports = homeController;

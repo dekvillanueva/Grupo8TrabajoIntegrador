@@ -159,6 +159,31 @@
       </div>
     </section>
 
+    <!--***********   CATEGORIES SECTION   *******************************************-->
+
+    <section>
+      <div class="mt-25">
+        <h2 class="display-6 border-bottom border-primary text-secondary p-3">Sensores por categoría</h2>
+      </div>
+
+      <div class="categories-cards-container w-100">
+      <%for(let i=0; i<categories.length; i++){%>
+        <div class="card mb-3 categories-cards" style="max-width: 540px;">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img src="/assets/images/encoder<%=+i%>>.png" class="img-fluid rounded-start " alt="...">
+            </div>
+            <div class="col-md-8">
+              <div class="categories-cards-text">
+                <h7 class="card-title"><%=category.name%></h5>
+             </div>
+            </div>
+          </div>
+        </div>
+      <%}%>
+    </div>
+
+    </section>
 
     <!--***********   SALES SECTION   *******************************************-->
 
@@ -290,8 +315,8 @@
               conservación de los recursos, sino que también aumentan la <b>satisfacción del cliente</b>.
             </p>
             <p>
-              Para nosotros, la acción respetuosa con el medio ambiente empieza en casa y no solo está 
-              asociada a la eficiencia energética o al uso de energías renovables. La construcción y la fabricación
+              Para nosotros, la acción respetuosa con el medio ambiente comienza en casa y no solo está 
+              asociada a la eficiencia energética o al uso de energías renovables, sino también, a la construcción y la fabricación
               respetuosa con el medio ambiente y climáticamente neutra.
             </p>
           </div>
