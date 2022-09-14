@@ -24,8 +24,18 @@
     <main>
       <body>
         <% for(let i=0; i<users.length; i++){%>
-          <%- include('partials/userCard.ejs', {user: users[i]})%>
-            <% } %>
+          <div class="card-group">
+            <div class="card" style="width: 20vw; min-height: 60vh;">
+              
+                <img src="<%=users[i].avatar %>" class="card-img-top" alt="...">
+              
+              <div class="card-body">
+                <h5 class="card-title"> <%= users[i].user_name %></h5>
+                <p class="card-text"><%= users[i].email %></p>    
+              </div>
+            </div>
+          </div>
+        <% } %>
       </body>
     </main>
 
