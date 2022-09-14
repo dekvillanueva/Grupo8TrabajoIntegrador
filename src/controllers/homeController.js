@@ -11,12 +11,17 @@ const homeController = {
       }
     });
 
+    let categoriesImages = [];
+    categoriesImages.push("/assets/images/categories/s-temperatura.jpeg", "/assets/images/categories/s-flujo.jpeg", 
+    "/assets/images/categories/s-gases.jpeg", "/assets/images/categories/s-presion.jpeg", "/assets/images/categories/s-posicion.jpeg");
+
     const listOfCategories = await DB.Category.findAll();
 
     res.render("home", {
       userLogged: req.session.userLogged,
       listOfProductsWithDiscount: listOfProductsWithDiscount,
-      categories: listOfCategories
+      categories: listOfCategories,
+      catImages: categoriesImages
     });
   },
 
